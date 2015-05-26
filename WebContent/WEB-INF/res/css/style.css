@@ -1,12 +1,39 @@
+body {
+    background: #EEFFFF;
+}
+
 #tryme {
+    font-size: 30px;
 	font-style: bold;
 }
 
 #famous {
-	font-size: 11px;
-	font-color: grey;
+	font-size: 20px;
+	color: grey;
+	margin-left: 20px
 }
 
-#menu {
-	text-align: center
+
+.buttonmenu {
+    width: 27%;
+    height: 400px;
+    margin-left: 50px;
+    margin-right: 20px;
+    display: inline-block;
+	color: white;
+	border: none;
+
 }
+
+#emergency {
+    background: orange;
+}
+
+#recipes {
+    background: lightblue;
+}
+
+#shop {
+    background: limegreen;
+}
+

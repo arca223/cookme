@@ -5,28 +5,16 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core">
 <head>
+<link rel="stylesheet" type="text/css" href="WEB-INF/res/css/style.css"/>
 <title>CookMe Menu</title>
-<link rel="stylesheet" type="text/css" href="res/css/style.css">
 </head>
 <body>
 <p id="tryme">Try me</p>
 <p id="famous">I'm famous</p>
-<div id="menu">
-	<form>
-		<table border="0">
-			<tr>
-			<td>
-			 	<button class="buttonmenu" type="button" name="emergency">Emergency</button>
-			</td>
-			<td>
-				<button class="buttonmenu" type="button" name="recipes">Recipes</button>
-			</td>
-			<td>
-				<button class="buttonmenu" type="button" name="shop">Shop</button>
-			</td>
-			</tr>
-		</table>
+	<form id="menu">
+	 	<button class="buttonmenu" id="emergency" type="button" name="emergency">Emergency</button>
+		<button class="buttonmenu" id="recipes" type="button" name="recipes">Recipes</button>
+		<button class="buttonmenu" id="shop" type="button" name="shop">Shop</button>
 	</form>
-</div>
 </body>
 </html>
