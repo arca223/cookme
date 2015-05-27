@@ -16,6 +16,7 @@ body {
 
 .buttonmenu {
 	margin: 0 auto;
+	margin-left: 5px;
     width: 27%;
     height: 400px;
     /*margin-left: 40px;
@@ -29,18 +30,17 @@ body {
 	border-radius: 20px;
 }
 
-#emergency {
+.emergency {
 	background-color: #fc971f;
 	border-color: #d58512;
 }
 
-#recipes {
+.recipes {
 	background-color: #31b0d5;
 	border-color: #269abc;
 }
 
-#shop {
-	color: #fff;
+.shop {
 	background-color: #44bd44;
 	border-color: #398439;
 }
