@@ -37,10 +37,9 @@ public class RecipeControlerBean {
 		sessionMap.put("recipeList", recipeList);
 	}
 	
-	public RecipeListModelBean getRecipList(SearchRecipeBean searchCriterias){
+	public void getRecipList(SearchRecipeBean searchCriterias){
 		
+		System.out.println(searchCriterias.toString());
 		
-		
-		return null;
 	}
 }

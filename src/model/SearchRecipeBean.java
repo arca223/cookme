@@ -8,10 +8,14 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class SearchRecipeBean {
 	
-	private int expertise=1;
-	private int nbpeople=1;
-	private int duration;
+	private int expertise;
+	private int nbpeople;
+	private String duration;
 	private String type;
+	
+	public SearchRecipeBean(){	
+	}
+	
 	public int getExpertise() {
 		return expertise;
 	}
@@ -24,10 +28,10 @@ public class SearchRecipeBean {
 	public void setNbpeople(int nbpeople) {
 		this.nbpeople = nbpeople;
 	}
-	public int getDuration() {
+	public String getDuration() {
 		return duration;
 	}
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 	public String getType() {
@@ -35,6 +39,11 @@ public class SearchRecipeBean {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public String toString(){
+		return "[EXPERTISE]="+expertise+";[NBPEOPLE]="+nbpeople+";[DURATION]="+duration+";[TYPE]="+type;
+		
 	}
 
 }

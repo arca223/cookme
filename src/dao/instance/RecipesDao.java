@@ -92,7 +92,6 @@ public class RecipesDao {
 	
 	
 	
-	public ArrayList<RecipeModel> getRecipesByCriterias(SearchRecipeBean searchCriterias) {
 	
 	
 	
