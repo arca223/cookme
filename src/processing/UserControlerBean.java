@@ -29,8 +29,7 @@ public class UserControlerBean {
 				loginBean.getPwd());
 		if (user != null) {
 			// récupère l'espace de mémoire de JSF
-			ExternalContext externalContext = FacesContext.getCurrentInstance()
-					.getExternalContext();
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			// place l'utilisateur dans l'espace de mémoire de JSF
 			sessionMap.put("loggedUser", user);

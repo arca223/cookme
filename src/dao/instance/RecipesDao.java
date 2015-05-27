@@ -104,14 +104,16 @@ public class RecipesDao {
 			String sqlSelect = "SELECT * FROM recipes WHERE 1=1";
 
 			sqlSelect = (criterias.getExpertise() > 0) ? sqlSelect
-					+ "AND expertise = ?" : sqlSelect;
+					+ " AND expertise = ?" : sqlSelect;
 			sqlSelect = (criterias.getNbpeople() > 0) ? sqlSelect
-					+ "AND nbpeople = ?" : sqlSelect;
+					+ " AND nbpeople = ?" : sqlSelect;
 			sqlSelect = (criterias.getType().length() > 0) ? sqlSelect
-					+ "AND type = ?" : sqlSelect;
+					+ " AND type = ?" : sqlSelect;
 			sqlSelect = (criterias.getConvertedDuration() > 0) ? sqlSelect
-					+ "AND duration = ?" : sqlSelect;
-
+					+ " AND duration = ?" : sqlSelect;
+			
+			System.out.println(sqlSelect);
+			
 			PreparedStatement querySt = connection.prepareStatement(sqlSelect);
 
 			int i = 1;
@@ -126,10 +128,12 @@ public class RecipesDao {
 			}
 			if (criterias.getType().length() > 0) {
 				querySt.setString(i, criterias.getType());
+				System.out.println(criterias.getType() + " " + i);
 				i++;
 			}
 			if (criterias.getConvertedDuration() > 0) {
 				querySt.setInt(i, criterias.getConvertedDuration());
+				System.out.println(criterias.getConvertedDuration() + " " + i);
 			}
 
 			ResultSet rst = querySt.executeQuery();
@@ -143,7 +147,6 @@ public class RecipesDao {
 				recipe.setNbpeople(rst.getInt("nbpeople"));
 				recipe.setDuration(rst.getInt("duration"));
 				recipe.setType(rst.getString("type"));
-
 				recipeList.addRecipeList(recipe);
 			}
 
