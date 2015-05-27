@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.RecipeModelBean;
+import model.RecipeModel;
 import model.UserModelBean;
 
 public class RecipesDao {
@@ -27,7 +27,7 @@ public class RecipesDao {
 		dB_PWD = DB_PWD;
 	}
 
-	public void addRecipe(RecipeModelBean recipe) {
+	public void addRecipe(RecipeModel recipe) {
 		// Création de la requête
 		try {
 			// create connection
@@ -50,11 +50,11 @@ public class RecipesDao {
 		}
 	}
 
-	public ArrayList<RecipeModelBean> getAllRecipes() {
+	public ArrayList<RecipeModel> getAllRecipes() {
 		java.sql.Statement query;
-		RecipeModelBean recipe;
+		RecipeModel recipe;
 
-		ArrayList<RecipeModelBean> recipeList = new ArrayList<RecipeModelBean>();
+		ArrayList<RecipeModel> recipeList = new ArrayList<RecipeModel>();
 
 		try {
 			// create connection
@@ -69,7 +69,7 @@ public class RecipesDao {
 			
 			while (rst.next()) {
 				
-				recipe = new RecipeModelBean();
+				recipe = new RecipeModel();
 				recipe.setTitle(rst.getString("title"));
 				recipe.setDescription(rst.getString("description"));
 				recipe.setExpertise(rst.getInt("expertise"));

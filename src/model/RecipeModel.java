@@ -1,6 +1,6 @@
 package model;
 
-public class RecipeModelBean {
+public class RecipeModel {
 	private String title;
 	private String description;
 	private int expertise;
@@ -8,10 +8,10 @@ public class RecipeModelBean {
 	private int duration;
 	private String type;
 
-	public RecipeModelBean() {
+	public RecipeModel() {
 	}
 
-	public RecipeModelBean(String title, String description, int expertise,
+	public RecipeModel(String title, String description, int expertise,
 			int duration, int nbpeople, String type) {
 		this.title = title;
 		this.description = description;

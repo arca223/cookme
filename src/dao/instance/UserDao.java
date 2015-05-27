@@ -31,17 +31,17 @@ public class UserDao {
 			// create connection
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-			
-			String sqlInsert = "INSERT INTO users(firstname, lastname, age, mail, login, password) VALUES (?,?,?,?,?,?)";
+
+			String sqlInsert = "INSERT INTO users(firstname, lastname, age, mail, login, pwd) VALUES (?,?,?,?,?,?)";
 			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
 
-			querySt.setString(	1, user.getFirstname());
-			querySt.setString(	2, user.getLastname());
-			querySt.setInt(		3, user.getAge());
-			querySt.setString(	4, user.getMail());
-			querySt.setString(	5, user.getLogin());
-			querySt.setString(	6, user.getPwd());
-			
+			querySt.setString(1, user.getFirstname());
+			querySt.setString(2, user.getLastname());
+			querySt.setInt(3, user.getAge());
+			querySt.setString(4, user.getMail());
+			querySt.setString(5, user.getLogin());
+			querySt.setString(6, user.getPwd());
+
 			querySt.executeUpdate();
 
 			connection.close();
@@ -51,7 +51,7 @@ public class UserDao {
 	}
 
 	public ArrayList<UserModelBean> getAllUser() {
-		
+
 		java.sql.Statement query;
 		UserModelBean user;
 		// return value
@@ -60,33 +60,66 @@ public class UserDao {
 			// create connection
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-			
+
 			String sqlSelect = "SELECT * FROM users";
-			
+
 			query = connection.createStatement();
-			
+
 			ResultSet rst = query.executeQuery(sqlSelect);
 
 			while (rst.next()) {
-				
-				user = new UserModelBean();//rst.getString("firstname"),rst.getString("lastname"));
+
+				user = new UserModelBean();// rst.getString("firstname"),rst.getString("lastname"));
 				user.setFirstname(rst.getString("firstname"));
 				user.setLastname(rst.getString("lastname"));
 				user.setMail(rst.getString("mail"));
 				user.setAge(rst.getInt("age"));
 				user.setLogin(rst.getString("login"));
 				user.setPwd(rst.getString("pwd"));
-				
-				userList.add(user);
-				
-			}
 
-			
+				userList.add(user);
+
+			}
 
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return userList;
+	}
+
+	public UserModelBean checkUser(String login, String pwd) {
+		
+		UserModelBean user = null;
+		
+		try{
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+
+			String sqlSelect = "SELECT * users WHERE login = ? AND pwd = ?";
+			PreparedStatement querySt = connection.prepareStatement(sqlSelect);
+			querySt.setString(5, login);
+			querySt.setString(6, pwd);
+			
+			ResultSet rst = querySt.executeQuery();
+			
+			while (rst.next()) {
+
+				user = new UserModelBean();
+				user.setFirstname(rst.getString("firstname"));
+				user.setLastname(rst.getString("lastname"));
+				user.setMail(rst.getString("mail"));
+				user.setAge(rst.getInt("age"));
+				user.setLogin(rst.getString("login"));
+				user.setPwd(rst.getString("pwd"));
+
+			}
+			
+			
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return user;
 	}
 }
