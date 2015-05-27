@@ -15,6 +15,7 @@ public class UserModelBean implements Serializable {
 	private String login;
 	private String pwd;
 
+
 	// Contrainte BEAN constructeur sans paramètre
 	public UserModelBean() {
 	}
