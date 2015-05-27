@@ -11,8 +11,10 @@ public class SearchRecipeBean {
 	private int expertise;
 	private int nbpeople;
 	private String duration;
+	private int convertedDuration;
 	private String type;
 	
+
 	public SearchRecipeBean(){	
 	}
 	
@@ -32,6 +34,9 @@ public class SearchRecipeBean {
 		return duration;
 	}
 	public void setDuration(String duration) {
+		
+		//convertedDuration = Integer.parseInt(duration.substring(0, 1));
+		convertedDuration = (duration.length() > 0 ) ? Integer.parseInt(duration.substring(0, 1)) : 0;
 		this.duration = duration;
 	}
 	public String getType() {
@@ -41,9 +46,19 @@ public class SearchRecipeBean {
 		this.type = type;
 	}
 	
+	public int getConvertedDuration() {
+		return convertedDuration;
+	}
+
+	public void setConvertedDuration(int convertedDuration) {
+		this.convertedDuration = convertedDuration;
+	}
+
 	public String toString(){
-		return "[EXPERTISE]="+expertise+";[NBPEOPLE]="+nbpeople+";[DURATION]="+duration+";[TYPE]="+type;
+		return "[EXPERTISE]="+expertise+";[NBPEOPLE]="+nbpeople+";[DURATION]="+convertedDuration+";[TYPE]="+type;
 		
 	}
+	
+	
 
 }

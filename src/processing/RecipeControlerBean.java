@@ -39,6 +39,10 @@ public class RecipeControlerBean {
 	
 	public void getRecipList(SearchRecipeBean searchCriterias){
 		
+		RecipeListModelBean recipeList = recipeDao.getRecipesByCriterias(searchCriterias);
+		
+		
+				
 		System.out.println(searchCriterias.toString());
 		
 	}

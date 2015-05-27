@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.RecipeListModelBean;
 import model.RecipeModel;
 import model.SearchRecipeBean;
 import model.UserModelBean;
@@ -67,9 +68,9 @@ public class RecipesDao {
 			query = connection.createStatement();
 
 			ResultSet rst = query.executeQuery(sqlSelect);
-			
+
 			while (rst.next()) {
-				
+
 				recipe = new RecipeModel();
 				recipe.setTitle(rst.getString("title"));
 				recipe.setDescription(rst.getString("description"));
@@ -77,7 +78,7 @@ public class RecipesDao {
 				recipe.setNbpeople(rst.getInt("nbpeople"));
 				recipe.setDuration(rst.getInt("duration"));
 				recipe.setType(rst.getString("type"));
-				
+
 				recipeList.add(recipe);
 			}
 
@@ -89,10 +90,68 @@ public class RecipesDao {
 
 		return recipeList;
 	}
-	
-	
-	
-	
-	
-	
+
+	public RecipeListModelBean getRecipesByCriterias(SearchRecipeBean criterias) {
+		RecipeModel recipe;
+
+		RecipeListModelBean recipeList = new RecipeListModelBean();
+		// Création de la requête
+		try {
+			// create connection
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+			//
+			String sqlSelect = "SELECT * FROM recipes WHERE 1=1";
+
+			sqlSelect = (criterias.getExpertise() > 0) ? sqlSelect
+					+ "AND expertise = ?" : sqlSelect;
+			sqlSelect = (criterias.getNbpeople() > 0) ? sqlSelect
+					+ "AND nbpeople = ?" : sqlSelect;
+			sqlSelect = (criterias.getType().length() > 0) ? sqlSelect
+					+ "AND type = ?" : sqlSelect;
+			sqlSelect = (criterias.getConvertedDuration() > 0) ? sqlSelect
+					+ "AND duration = ?" : sqlSelect;
+
+			PreparedStatement querySt = connection.prepareStatement(sqlSelect);
+
+			int i = 1;
+
+			if (criterias.getExpertise() > 0) {
+				querySt.setInt(i, criterias.getExpertise());
+				i++;
+			}
+			if (criterias.getNbpeople() > 0) {
+				querySt.setInt(i, criterias.getNbpeople());
+				i++;
+			}
+			if (criterias.getType().length() > 0) {
+				querySt.setString(i, criterias.getType());
+				i++;
+			}
+			if (criterias.getConvertedDuration() > 0) {
+				querySt.setInt(i, criterias.getConvertedDuration());
+			}
+
+			ResultSet rst = querySt.executeQuery();
+
+			while (rst.next()) {
+
+				recipe = new RecipeModel();
+				recipe.setTitle(rst.getString("title"));
+				recipe.setDescription(rst.getString("description"));
+				recipe.setExpertise(rst.getInt("expertise"));
+				recipe.setNbpeople(rst.getInt("nbpeople"));
+				recipe.setDuration(rst.getInt("duration"));
+				recipe.setType(rst.getString("type"));
+
+				recipeList.addRecipeList(recipe);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return recipeList;
+	}
+
 }

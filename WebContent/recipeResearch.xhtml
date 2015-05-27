@@ -12,7 +12,11 @@
 		<ui:define name="content">
 
 			<h:form>
-				<h:panelGrid columns="2" cellpadding="5">
+			
+			
+			 <p:panel id="basic" header="Recipe criterias" >
+
+   				<h:panelGrid columns="2" cellpadding="5">
 					
 					<p:outputLabel for="duration" value="Preparation Duration: " />
 					<p:inputMask id="duration" value="#{searchRecipeBean.duration}"
@@ -39,7 +43,7 @@
 					
 
 				</h:panelGrid>
-
+			</p:panel>
 				<p:dialog widgetVar="dlg" modal="true" resizable="false"
 					header="Values" showEffect="fade">
 					<p:panelGrid id="display" columns="2" columnClasses="label,value">
