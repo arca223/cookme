@@ -1,0 +1,48 @@
+body {
+    background: #EEFFFF;
+}
+
+#tryme {
+    font-size: 30px;
+	font-style: bold;
+}
+
+#famous {
+	font-size: 20px;
+	color: grey;
+	margin-left: 20px
+}
+
+
+.buttonmenu {
+    width: 27%;
+    height: 400px;
+    margin-left: 40px;
+    margin-right: 20px;
+	color: white;
+	display: inline-block;
+	margin-bottom: 0;
+	font-size: 20px;
+	font-weight: 400;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 20px;
+}
+
+#emergency {
+	background-color: #fc971f;
+	border-color: #d58512;
+}
+
+#recipes {
+	background-color: #31b0d5;
+	border-color: #269abc;
+}
+
+#shop {
+	color: #fff;
+	background-color: #44bd44;
+	border-color: #398439;
+}
+
+ 
