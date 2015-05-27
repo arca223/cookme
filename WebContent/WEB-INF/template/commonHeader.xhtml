@@ -11,49 +11,40 @@
 
 		<div class="ui-grid ui-grid-responsive">
 			<div class="ui-grid-row">
-				<div class="ui-grid-col-4">
+				<div class="ui-grid-col-2">
 					<p style="float: center;">Ici le titre de l'activité</p>
 				</div>
-				<div class="ui-grid-col-4">
-					<p:button value="Inscription" style="float:right;"
-						icon="ui-icon-plusthick">
-						<f:param name="param1" value="valueparam1" />
-					</p:button>
-				</div>
-				<div class="ui-grid-col-4">
-					<h:panelGrid lines="3" cellpadding="5">
-					<h:form>
+				<div class="ui-grid-col-1">
+				<h:form>
 					
-					<p:inputText id="login" value="#{loginBean.login}" required="false"
-							placeholder="Login" label="login">
-							<f:validateLength minimum="2" />
-						</p:inputText>
+						<h:inputText id="login" value="#{loginBean.login}" required="false"
+						placeholder="Login" label="login">
+						</h:inputText>
 						<p:tooltip id="toolTipLogin" for="login"
 							value="On précise ici les contraintes de saisie du login"
 							showEffect="clip" hideEffect="explode" />
-
 						<p:message for="login" display="icon" />
-
-						<p:password id="password" value="#{loginBean.pwd}"
+			
+						<h:password id="password" value="#{loginBean.pwd}"
 							placeholder="Password" />
 						<p:message for="password" display="icon" />
 						<p:tooltip id="toolTipPassword" for="password"
 							value="On précise ici les contraintes de saisie du password"
 							showEffect="clip" hideEffect="explode" />
-
-						<h:commandButton value="Connexion" action="#{userControlerBean.checkUser(loginBean)}" />
+			
+						<h:commandButton value="Connexion"
+							action="#{userControlerBean.checkUser(loginBean)}" />
 					</h:form>
-					
-					</h:panelGrid>
-					
-					
-					
-					
-						
+					</div>
+				
+				<div class="ui-grid-col-2">
+					<p:button value="Inscription" style="float:right;"
+						icon="ui-icon-plusthick">
+						<f:param name="param1" value="valueparam1" />
+					</p:button>
 				</div>
 			</div>
 		</div>
-
 	</ui:composition>
 </body>
 </html>

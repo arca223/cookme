@@ -30,8 +30,7 @@ public class UserControlerBean {
 		System.out.println(user.toString());
 		if (user != null) {
 			// récupère l'espace de mémoire de JSF
-			ExternalContext externalContext = FacesContext.getCurrentInstance()
-					.getExternalContext();
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			// place l'utilisateur dans l'espace de mémoire de JSF
 			sessionMap.put("loggedUser", user);
@@ -51,4 +50,8 @@ public class UserControlerBean {
 		// ajout de l'utilisateur à la base de données
 		this.userDao.addUser(userSubmitted);
 	}
+	
+	
+	
+	
 }

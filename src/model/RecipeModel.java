@@ -3,12 +3,13 @@ package model;
 public class RecipeModel {
 	private String title;
 	private String description;
-	private int expertise;
-	private int nbpeople;
+	private int expertise=1;
+	private int nbpeople=1;
 	private int duration;
 	private String type;
 
 	public RecipeModel() {
+		
 	}
 
 	public RecipeModel(String title, String description, int expertise,
