@@ -24,9 +24,10 @@ public class UserControlerBean {
 		this.userDao = DaoFabric.getInstance().createUserDao();
 	}
 
-	public String checkUser(LoginBean loginBean) {
-		UserModelBean user = this.userDao.checkUser(loginBean.getLogin(),
-				loginBean.getPwd());
+	public String checkUser(LoginBean loginBean) {	
+		
+		UserModelBean user = this.userDao.checkUser(loginBean.getLogin(),loginBean.getPwd());
+		System.out.println(user.toString());
 		if (user != null) {
 			// récupère l'espace de mémoire de JSF
 			ExternalContext externalContext = FacesContext.getCurrentInstance()
@@ -35,10 +36,12 @@ public class UserControlerBean {
 			// place l'utilisateur dans l'espace de mémoire de JSF
 			sessionMap.put("loggedUser", user);
 			// redirect the current page
-			return "userdisplay.xhtml";
-		} else {
+			return "userDisplay.xhtml";
+		} 
+		else 
+		{
 			// redirect the current page
-			return "userLogin.xhtml";
+			return "identification.xhtml";
 		}
 	}
 

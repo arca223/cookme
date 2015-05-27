@@ -1,21 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-<link rel="stylesheet" type="text/css" href="res/css/style.css"/>
-<title>CookMe Menu</title>
-</h:head>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
 <h:body>
-<p id="tryme">Try me</p>
-<p id="famous">I'm famous</p>
-<br />
-	<h:form id="menu">
-	 	<h:commandButton class="buttonmenu emergency" value="Emergency"/>
-		<h:commandButton class="buttonmenu recipes" value="Recipes"/>
-		<h:commandButton class="buttonmenu shop" value="Shop"/>
-	</h:form>
+	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
+
+		<ui:define name="header">
+		</ui:define>
+
+		<ui:define name="content">
+			<p id="tryme">Try me</p>
+			<p id="famous">I'm famous</p>
+			<br />
+			<h:form id="menu">
+				<h:commandButton class="buttonmenu emergency" value="Emergency" />
+				<h:commandButton class="buttonmenu recipes" value="Recipes" />
+				<h:commandButton class="buttonmenu shop" value="Shop" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
