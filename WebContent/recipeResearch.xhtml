@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+
+	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
+
+		<ui:define name="content">
+
+			<h:form>
+			
+			
+			 <p:panel id="basic" header="Recipe criterias" >
+
+   				<h:panelGrid columns="2" cellpadding="5">
+					
+					<p:outputLabel for="duration" value="Preparation Duration: " />
+					<p:inputMask id="duration" value="#{searchRecipeBean.duration}"
+						mask="9:99" />
+
+					<h:outputText value="Cook Expertise" />
+					<p:rating value="#{searchRecipeBean.expertise}" />
+
+					<h:outputText id="output"
+						value="For #{searchRecipeBean.nbpeople} people" />
+					<h:inputHidden id="txt2" value="#{searchRecipeBean.nbpeople}" />
+					<p:slider minValue="1" maxValue="10" for="txt2" display="output"
+						style="width: 200px" displayTemplate="For {value} people" />
+					
+					<p:outputLabel for="type" value="Cook Type:" />
+					<p:selectOneMenu id="type" value="#{searchRecipeBean.type}"
+						style="width:125px">
+						<f:selectItem itemLabel="Salad" 	itemValue="Salad" />
+						<f:selectItem itemLabel="Meat" 		itemValue="Meal" />
+						<f:selectItem itemLabel="Fish" 		itemValue="Fish" />
+						<f:selectItem itemLabel="Dessert" 	itemValue="Dessert" />
+					</p:selectOneMenu>
+
+					
+
+				</h:panelGrid>
+			</p:panel>
+				<p:dialog widgetVar="dlg" modal="true" resizable="false"
+					header="Values" showEffect="fade">
+					<p:panelGrid id="display" columns="2" columnClasses="label,value">
+						<h:outputText value="Preparation Duration: " />
+						<h:outputText id="durationValue" value="#{maskView.date}" />
+					</p:panelGrid>
+				</p:dialog>
+				<h:commandButton value="Teach Me!" action="#{recipeControlerBean.getRecipList(searchRecipeBean)}" />
+			</h:form>
+
+		</ui:define>
+
+		<ui:define name="footer">
+			<h2>This is page1 Footer</h2>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>
