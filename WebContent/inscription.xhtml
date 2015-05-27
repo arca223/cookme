@@ -4,17 +4,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
       >
     <h:body>
+    	
  
     	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
  
+ 
     		<ui:define name="content">
-    			<h2>This is page1 content</h2>
-    			<ul><li>ta mere</li><li>ta mere2</li><li>ta mere</li></ul>
+    			<h2>Create account</h2>
+    			
+    			<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+	    			<h:outputText class="outputform" value="Enter your Firstname: "/>
+	     			<p:inputText styleClass="inputform" value="#{userSubmissionModelBean.firstname}" placeholder="Enter your firstname"/>
+	    			
+	    			<h:outputText class="outputform" value="Lastname: "/>
+	    			<p:inputText styleClass="inputform" value="#{userSubmissionModelBean.lastname}" placeholder="Enter your lastname"/>
+	    			
+	    			<h:outputText class="outputform" value="Age: "/>
+	     			<p:inputText styleClass="inputform" value="#{userSubmissionModelBean.age}"/>
+	    			
+	    			<h:outputText class="outputform" value="Mail: *"/>
+	     			<p:inputText styleClass="inputform" value="#{userSubmissionModelBean.mail}" required="true" placeholder="Enter your mail"/>
+	    			
+	    			<h:outputText class="outputform" value="Login: *"/>
+	     			<p:inputText styleClass="inputform" value="#{userSubmissionModelBean.login}" required="true" placeholder="Enter your login"/>
+	    		
+	    		                  
+		        	<h:outputLabel for="pwd1" value="Password: *" />
+ 			        <p:password id="pwd1" value="#{userSubmissionModelBean.pwd}" match="pwd2" label="Password 1" required="true" />
+			 
+			        <h:outputLabel for="pwd2" value="Retype Password: *" />
+			        <p:password id="pwd2" value="#{userSubmissionModelBean.pwd}" label="Password 2" required="true" />
+		        </h:panelGrid>
+			    <p:commandButton update="matchGrid" value="Save" />
+			    
     		</ui:define>
  
-		<ui:define name="footer">
+			<ui:define name="footer">
     			<h2>This is page1 Footer</h2>
     		</ui:define>
  
