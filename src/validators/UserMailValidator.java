@@ -11,9 +11,9 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-@FacesValidator(value = "validators.username")
+@FacesValidator(value = "validators.usermail")
 public class UserMailValidator implements Validator {
-	private static final String USERMAIL_PATTERN = "[a-zA-Z0-9-._]+@[a-zA-Z0-9-._].[a-z]+";
+	private static final String USERMAIL_PATTERN = "[a-zA-Z0-9-._]+@[a-zA-Z0-9-._]+.[a-z]+";
 	private Pattern pattern;
 	private Matcher matcher;
 
@@ -27,7 +27,7 @@ public class UserMailValidator implements Validator {
 		 if(!matcher.matches()){
 			 FacesMessage msg =
 			 new FacesMessage("user mail validation failed.",
-					 "User Mail Validation failed please follow the contraint"+USERMAIL_PATTERN);
+					 "Please respect constraint : "+USERMAIL_PATTERN);
 			 msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			 throw new ValidatorException(msg); 
 		 }

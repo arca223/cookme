@@ -11,9 +11,9 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-@FacesValidator(value = "validators.username")
+@FacesValidator(value = "validators.userlogin")
 public class UserLoginValidator implements Validator {
-	private static final String USERLOGIN_PATTERN = "[a-zA-Z0-9-._]";
+	private static final String USERLOGIN_PATTERN = "[a-zA-Z0-9-._]+";
 	private Pattern pattern;
 	private Matcher matcher;
 
@@ -27,7 +27,7 @@ public class UserLoginValidator implements Validator {
 		 if(!matcher.matches()){
 			 FacesMessage msg =
 			 new FacesMessage("user login validation failed.",
-					 "User Login Validation failed please follow the contraint"+USERLOGIN_PATTERN);
+					 "Please respect constraint : "+USERLOGIN_PATTERN);
 			 msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			 throw new ValidatorException(msg); 
 		 }
