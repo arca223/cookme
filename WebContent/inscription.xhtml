@@ -21,19 +21,19 @@
     			<h:form>
     			<h:panelGrid columns="3" id="matchGrid" cellpadding="5">
 	    			<h:outputText class="outputform" value="Firstname: "/>
-	     			<p:inputText id="firstname" styleClass="inputform" value="#{userSubmissionModelBean.firstname}" label="Firstname" placeholder="Enter your firstname" require="true">
+	     			<p:inputText id="firstname" styleClass="inputform" value="#{userSubmissionModelBean.firstname}" label="Firstname" placeholder="Enter your firstname" required="true">
 		     			<f:validator validatorId="validators.username"></f:validator>
 	     			</p:inputText>
 	     			<p:message for="firstname" showDetail="true" style="color:red" />
 	    			
 	    			<h:outputText class="outputform" value="Lastname: "/>
-	    			<p:inputText id="lastname" styleClass="inputform" value="#{userSubmissionModelBean.lastname}" label="Lastname" placeholder="Enter your lastname" require="true">
+	    			<p:inputText id="lastname" styleClass="inputform" value="#{userSubmissionModelBean.lastname}" label="Lastname" placeholder="Enter your lastname" required="true">
 	    				<f:validator validatorId="validators.username"></f:validator>
 	     			</p:inputText>
 	     			<p:message for="lastname" showDetail="true" style="color:red" />
 	    			
 	    			<h:outputText class="outputform" value="Age: "/>
-	     			<p:inputText id="age" styleClass="inputform" value="#{userSubmissionModelBean.age}" label="Age">
+	     			<p:inputText id="age" styleClass="inputform" value="#{userSubmissionModelBean.age}" label="Age" required="true" converterMessage="Please respect constraint : number between 0 and 99">
 	     				<f:validator validatorId="validators.userage"></f:validator>
 	     			</p:inputText>
 	     			<p:message for="age" showDetail="true" style="color:red" />
@@ -42,23 +42,23 @@
 	     			<p:inputText id="mail" styleClass="inputform" value="#{userSubmissionModelBean.mail}" label="Mail" required="true" placeholder="Enter your mail">
 	     				<f:validator validatorId="validators.usermail"></f:validator>
 	     			</p:inputText>
-	     			<h:message for="mail" showDetail="true" style="color:red" />
+	     			<p:message for="mail" showDetail="true" style="color:red" />
 	    			
 	    			<h:outputText class="outputform" value="Login: *"/>
 	     			<p:inputText id="login" styleClass="inputform" value="#{userSubmissionModelBean.login}" label="Login" required="true" placeholder="Enter your login">
 	     				<f:validator validatorId="validators.userlogin"></f:validator>
 	     			</p:inputText>
-	     			<h:message for="login" showDetail="true" style="color:red" />
+	     			<p:message for="login" showDetail="true" style="color:red" />
 	    		
 	    		                  
 		        	<h:outputLabel for="pwd1" value="Password: *" />
  			        <p:password id="pwd1" value="#{userSubmissionModelBean.pwd}" match="pwd2" label="Password 1" required="true" />
- 			        <p:message for="pwd1" showDetail="true" autoUpdate="true" />
+ 			        <p:message for="pwd1" showDetail="true" />
 			 
 			        <h:outputLabel for="pwd2" value="Retype Password: *" />
 			        <p:password id="pwd2" value="#{userSubmissionModelBean.pwd}" label="Password 2" required="true" />
 		        </h:panelGrid>
-			    <h:commandButton update="matchGrid" value="Create" action="#{userControllerBean.checkAndAddUser(userSubmissionBean)}"/>
+			    <h:commandButton update="matchGrid" value="Create" action="#{userControlerBean.checkAndAddUser(userSubmissionBean)}"/>
 			    </h:form>
 			</div>
 		    </div>
