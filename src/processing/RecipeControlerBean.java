@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import model.RecipeListModelBean;
 import model.RecipeModel;
+import model.SearchRecipeBean;
 import dao.fabric.DaoFabric;
 import dao.instance.RecipesDao;
 
@@ -34,5 +35,12 @@ public class RecipeControlerBean {
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		// place la liste de recette dans l'espace de mémoire de JSF
 		sessionMap.put("recipeList", recipeList);
+	}
+	
+	public RecipeListModelBean getRecipList(SearchRecipeBean searchCriterias){
+		
+		
+		
+		return null;
 	}
 }

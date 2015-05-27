@@ -9,6 +9,7 @@ public class RecipeModel {
 	private String type;
 
 	public RecipeModel() {
+		
 	}
 
 	public RecipeModel(String title, String description, int expertise,

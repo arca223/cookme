@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.RecipeModel;
+import model.SearchRecipeBean;
 import model.UserModelBean;
 
 public class RecipesDao {
@@ -88,4 +89,11 @@ public class RecipesDao {
 
 		return recipeList;
 	}
+	
+	
+	
+	public ArrayList<RecipeModel> getRecipesByCriterias(SearchRecipeBean searchCriterias) {
+	
+	
+	
 }

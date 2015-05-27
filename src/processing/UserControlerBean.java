@@ -48,4 +48,8 @@ public class UserControlerBean {
 		// ajout de l'utilisateur à la base de données
 		this.userDao.addUser(userSubmitted);
 	}
+	
+	
+	
+	
 }
