@@ -96,12 +96,13 @@ public class UserDao {
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 
-			String sqlSelect = "SELECT * users WHERE login = ? AND pwd = ?";
+			String sqlSelect = "SELECT * FROM users WHERE login = ? AND pwd = ?";
 			PreparedStatement querySt = connection.prepareStatement(sqlSelect);
-			querySt.setString(5, login);
-			querySt.setString(6, pwd);
+			querySt.setString(1, login);
+			querySt.setString(2, pwd);
 			
 			ResultSet rst = querySt.executeQuery();
+			
 			
 			while (rst.next()) {
 
@@ -114,8 +115,6 @@ public class UserDao {
 				user.setPwd(rst.getString("pwd"));
 
 			}
-			
-			
 		}
 		catch(SQLException e){
 			e.printStackTrace();

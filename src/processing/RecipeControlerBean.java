@@ -36,14 +36,22 @@ public class RecipeControlerBean {
 		// place la liste de recette dans l'espace de mémoire de JSF
 		sessionMap.put("recipeList", recipeList);
 	}
-	
-	public void getRecipList(SearchRecipeBean searchCriterias){
-		
-		RecipeListModelBean recipeList = recipeDao.getRecipesByCriterias(searchCriterias);
-		
-		
-				
+
+	public String getRecipList(SearchRecipeBean searchCriterias) {
+
+		RecipeListModelBean recipeList = recipeDao
+				.getRecipesByCriterias(searchCriterias);
+
+		// récupère l'espace de mémoire de JSF
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		// place l'utilisateur dans l'espace de mémoire de JSF
+		sessionMap.put("resultRecipe", recipeList);
+		// redirect the current page
+
 		System.out.println(searchCriterias.toString());
-		
+
+		return "recipeResult.jsf";
+
 	}
 }
