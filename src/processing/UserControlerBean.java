@@ -44,11 +44,16 @@ public class UserControlerBean {
 		}
 	}
 
-	public void checkAndAddUser(UserSubmissionModelBean userSubmitted) {
+	public String checkAndAddUser(UserSubmissionModelBean userSubmitted) {
 		// Vérifier les propriétés de l'utilisateur
 		// TODO
 		// ajout de l'utilisateur à la base de données
-		this.userDao.addUser(userSubmitted);
+		int res = this.userDao.addUser(userSubmitted);
+		if (res != 0) {
+			return "login.xhtml";
+		} else {
+			return Integer.toString(res);
+		}
 	}
 	
 	

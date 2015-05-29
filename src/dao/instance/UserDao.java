@@ -25,7 +25,7 @@ public class UserDao {
 		dB_PWD = DB_PWD;
 	}
 
-	public void addUser(UserModelBean user) {
+	public int addUser(UserModelBean user) {
 		// Création de la requête
 		try {
 			// create connection
@@ -42,11 +42,14 @@ public class UserDao {
 			querySt.setString(5, user.getLogin());
 			querySt.setString(6, user.getPwd());
 
-			querySt.executeUpdate();
-
+			int res = querySt.executeUpdate();
 			connection.close();
+			
+			return res;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
+			return 0;
 		}
 	}
 

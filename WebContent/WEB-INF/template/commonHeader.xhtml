@@ -17,22 +17,22 @@
 				<div class="ui-grid-col-1">
 				<h:form>
 					
-						<h:inputText id="login" value="#{loginBean.login}" required="false"
+						<p:inputText id="login" value="#{loginBean.login}" required="false"
 						placeholder="Login" label="login">
-						</h:inputText>
+						</p:inputText>
 						<p:tooltip id="toolTipLogin" for="login"
 							value="On précise ici les contraintes de saisie du login"
 							showEffect="clip" hideEffect="explode" />
 						<p:message for="login" display="icon" />
 			
-						<h:password id="password" value="#{loginBean.pwd}"
+						<p:password id="password" value="#{loginBean.pwd}"
 							placeholder="Password" />
 						<p:message for="password" display="icon" />
 						<p:tooltip id="toolTipPassword" for="password"
 							value="On précise ici les contraintes de saisie du password"
 							showEffect="clip" hideEffect="explode" />
 			
-						<h:commandButton value="Connexion"
+						<p:commandButton value="Connexion"
 							action="#{userControlerBean.checkUser(loginBean)}" />
 					</h:form>
 					</div>
