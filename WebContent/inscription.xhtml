@@ -58,7 +58,7 @@
 			        <h:outputLabel for="pwd2" value="Retype Password: *" />
 			        <p:password id="pwd2" value="#{userSubmissionModelBean.pwd}" label="Password 2" required="true" />
 		        </h:panelGrid>
-			    <h:commandButton update="matchGrid" value="Create" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}"/>
+			    <p:commandButton update="matchGrid" value="Create" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}"/>
 			    </h:form>
 			</div>
 		    </div>

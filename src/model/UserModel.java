@@ -6,9 +6,8 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean
-@SessionScoped
-public class UserModelBean implements Serializable {
+
+public class UserModel implements Serializable {
 	/**
 	 * 
 	 */
@@ -19,9 +18,10 @@ public class UserModelBean implements Serializable {
 	private int age;
 	private String login;
 	private String pwd;
+	private int admin;
 
 	// Contrainte BEAN constructeur sans paramètre
-	public UserModelBean() {
+	public UserModel() {
 	}
 
 	public String getLastname() {
@@ -68,7 +68,7 @@ public class UserModelBean implements Serializable {
 	public String toString() {
 		return "[SURNAME]:" + this.getFirstname() + ",[LASTNAME]:"
 				+ this.getLastname() + ",[AGE]:" + this.getAge() + ",[LOGIN]:"
-				+ this.getLogin() + ",[PWD]:" + this.getPwd();
+				+ this.getLogin() + ",[PWD]:" + this.getPwd() + ",[ADMIN]:" + this.getAdmin();
 	}
 
 	public String getMail() {
@@ -77,5 +77,13 @@ public class UserModelBean implements Serializable {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	public int getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(int admin) {
+		this.admin = admin;
 	}
 }

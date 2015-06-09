@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.UserModelBean;
+import model.UserModel;
 
 public class UserDao {
 	private Connection connection;
@@ -25,7 +25,7 @@ public class UserDao {
 		dB_PWD = DB_PWD;
 	}
 
-	public int addUser(UserModelBean user) {
+	public int addUser(UserModel user) {
 		// Création de la requête
 		try {
 			// create connection
@@ -53,12 +53,12 @@ public class UserDao {
 		}
 	}
 
-	public ArrayList<UserModelBean> getAllUser() {
+	public ArrayList<UserModel> getAllUser() {
 
 		java.sql.Statement query;
-		UserModelBean user;
+		UserModel user;
 		// return value
-		ArrayList<UserModelBean> userList = new ArrayList<UserModelBean>();
+		ArrayList<UserModel> userList = new ArrayList<UserModel>();
 		try {
 			// create connection
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
@@ -72,13 +72,14 @@ public class UserDao {
 
 			while (rst.next()) {
 
-				user = new UserModelBean();// rst.getString("firstname"),rst.getString("lastname"));
+				user = new UserModel();// rst.getString("firstname"),rst.getString("lastname"));
 				user.setFirstname(rst.getString("firstname"));
 				user.setLastname(rst.getString("lastname"));
 				user.setMail(rst.getString("mail"));
 				user.setAge(rst.getInt("age"));
 				user.setLogin(rst.getString("login"));
 				user.setPwd(rst.getString("pwd"));
+				user.setAdmin(rst.getInt("admin"));
 
 				userList.add(user);
 
@@ -91,9 +92,9 @@ public class UserDao {
 		return userList;
 	}
 
-	public UserModelBean checkUser(String login, String pwd) {
+	public UserModel checkUser(String login, String pwd) {
 		
-		UserModelBean user = null;
+		UserModel user = null;
 		
 		try{
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
@@ -109,7 +110,7 @@ public class UserDao {
 			
 			while (rst.next()) {
 
-				user = new UserModelBean();
+				user = new UserModel();
 				user.setFirstname(rst.getString("firstname"));
 				user.setLastname(rst.getString("lastname"));
 				user.setMail(rst.getString("mail"));
