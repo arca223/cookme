@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import model.RecipeListModelBean;
 import model.RecipeModel;
 import model.SearchRecipeBean;
-import model.UserModelBean;
+import model.UserModel;
 
 public class RecipesDao {
 
