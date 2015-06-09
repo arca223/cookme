@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+
+    <ui:composition template="WEB-INF/template/commonLayout.xhtml">
+
+        <ui:define name="content">
+			
+	        <f:facet name="header"> Recipes zzzzzzzzzzzzzzzzzzzzzz</f:facet>
+			
+			<p:panel header="Salad nicoise#{recipe.title}" style="text-align:center"> 
+			
+		        <aside>
+		        	<h:outputText style="display: block;" value="#{recipe.description} salad" />
+	               	<h:outputText style="display: block;" value="#{recipe.duration} 10min" />
+	               	<h:outputText style="display: block;" value="#{recipe.nbpeople} 4people" />
+	               	<p:rating 	  value="#{recipe.expertise}" readonly="true" />
+	               	<h:outputText value="#{recipe.description}" />
+				</aside>
+				<p>Ex turba vero imae sortis et paupertinae in tabernis aliqui pernoctant vinariis, non nulli 
+				velariis umbraculorum theatralium latent, quae Campanam imitatus lasciviam Catulus in aedilitate 
+				sua suspendit omnium primus; aut pugnaciter aleis certant turpi sono fragosis naribus introrsum 
+				reducto spiritu concrepantes; aut quod est studiorum omnium maximum ab ortu lucis ad vesperam sole 
+				fatiscunt vel pluviis, per minutias aurigarum equorumque praecipua vel delicta scrutantes.<BR />
+
+				Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam 
+				Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis, inflammatrix 
+				saevientis adsidua, humani cruoris avida nihil mitius quam maritus; qui paulatim eruditiores facti processu 
+				temporis ad nocendum per clandestinos versutosque rumigerulos conpertis leviter addere quaedam male suetos falsa 
+				et placentia sibi discentes, adfectati regni vel artium nefandarum calumnias insontibus adfligebant.</p>
+	        </p:panel>
+
+			<p:panel header="Comment" style="text-align:center"> 
+			
+				<div class="ui-grid ui-grid-responsive">
+				    <div class="ui-grid-row">
+				        <div class="ui-grid-col-1">MaxSwagdeCok </div>
+				        <div class="ui-grid-col-2">09/06/2015 18:00</div>
+				        <div class="ui-grid-col-7">Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam 
+				Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis</div>
+				        <div class="ui-grid-col-2">	<p:rating value="#{recipe.expertise}" readonly="true" /></div>
+				    </div>
+				</div>
+	        </p:panel>
+
+
+
+
+        </ui:define>
+
+        <ui:define name="footer">
+            <h2>This is page1 Footer</h2>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>
+

@@ -1,4 +1,13 @@
+* {
+	margin: 0;
+}
+html{
+	height: 100%;
+}
+
+
 body {
+	height: 100%;
     background: #EEFFFF;
 }
 
@@ -13,6 +22,11 @@ body {
 	margin-left: 20px
 }
 
+.splash{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .buttonmenu {
 	margin: 0 auto;
@@ -43,4 +57,27 @@ body {
 .shop {
 	background-color: #44bd44;
 	border-color: #398439;
+}
+
+.footer, .push {
+	height: 4em;
+}
+
+#content {
+	min-height: 100%;
+	height: auto ;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+
+aside{
+	display: inline;
+	float: left;
+	border-color: #4F4F4F;
+	border-style: solid;
+	border-width: 1px;
+}
+
+inaside{
+	display: block;
 }
