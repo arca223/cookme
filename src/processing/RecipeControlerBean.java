@@ -24,11 +24,7 @@ public class RecipeControlerBean {
 	}
 
 	public void loadAllRecipe() {
-		ArrayList<RecipeModel> list = this.recipeDao.getAllRecipes();
 		RecipeListModelBean recipeList = new RecipeListModelBean();
-		for (RecipeModel recipe : list) {
-			recipeList.addRecipeList(recipe);
-		}
 		// récupère l'espace de mémoire de JSF
 		ExternalContext externalContext = FacesContext.getCurrentInstance()
 				.getExternalContext();

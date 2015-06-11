@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import model.RecipeListModelBean;
 import model.RecipeModel;
 import model.SearchRecipeBean;
-import model.UserModel;
 
 public class RecipesDao {
 
@@ -22,7 +21,6 @@ public class RecipesDao {
 
 	public RecipesDao(String DB_HOST, String DB_PORT, String DB_NAME,
 			String DB_USER, String DB_PWD) {
-		dB_HOST = DB_HOST;
 		dB_PORT = DB_PORT;
 		dB_NAME = DB_NAME;
 		dB_USER = DB_USER;
@@ -52,11 +50,11 @@ public class RecipesDao {
 		}
 	}
 
-	public ArrayList<RecipeModel> getAllRecipes() {
+	public RecipeListModelBean getAllRecipes() {
 		java.sql.Statement query;
 		RecipeModel recipe;
 
-		ArrayList<RecipeModel> recipeList = new ArrayList<RecipeModel>();
+		RecipeListModelBean recipeList = new RecipeListModelBean();
 
 		try {
 			// create connection
@@ -78,8 +76,9 @@ public class RecipesDao {
 				recipe.setNbpeople(rst.getInt("nbpeople"));
 				recipe.setDuration(rst.getInt("duration"));
 				recipe.setType(rst.getString("type"));
+				recipe.setId(rst.getInt("id"));
 
-				recipeList.add(recipe);
+				recipeList.addRecipeList(recipe);
 			}
 
 		}
@@ -109,7 +108,7 @@ public class RecipesDao {
 					+ " AND nbpeople = ?" : sqlSelect;
 			sqlSelect = (criterias.getType().length() > 0) ? sqlSelect
 					+ " AND type = ?" : sqlSelect;
-			sqlSelect = (criterias.getConvertedDuration() > 0) ? sqlSelect
+			sqlSelect = (criterias.getDuration() > 0) ? sqlSelect
 					+ " AND duration = ?" : sqlSelect;
 			
 			System.out.println(sqlSelect);
@@ -131,9 +130,9 @@ public class RecipesDao {
 				System.out.println(criterias.getType() + " " + i);
 				i++;
 			}
-			if (criterias.getConvertedDuration() > 0) {
-				querySt.setInt(i, criterias.getConvertedDuration());
-				System.out.println(criterias.getConvertedDuration() + " " + i);
+			if (criterias.getDuration() > 0) {
+				querySt.setInt(i, criterias.getDuration());
+				System.out.println(criterias.getDuration() + " " + i);
 			}
 
 			ResultSet rst = querySt.executeQuery();
@@ -147,6 +146,7 @@ public class RecipesDao {
 				recipe.setNbpeople(rst.getInt("nbpeople"));
 				recipe.setDuration(rst.getInt("duration"));
 				recipe.setType(rst.getString("type"));
+				recipe.setId(rst.getInt("id"));
 				recipeList.addRecipeList(recipe);
 			}
 

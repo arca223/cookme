@@ -80,6 +80,7 @@ public class UserDao {
 				user.setLogin(rst.getString("login"));
 				user.setPwd(rst.getString("pwd"));
 				user.setAdmin(rst.getInt("admin"));
+				
 
 				userList.add(user);
 
