@@ -130,6 +130,45 @@ public class UserDao {
 		return user;
 	}
 	
+public UserModel checkUserAdmin(String login, String pwd) {
+		
+	UserModel user = null;
+	
+	try
+	{
+		connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+				+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+
+		String sqlSelect = "SELECT * FROM users WHERE login = ? AND pwd = ?";
+		PreparedStatement querySt = connection.prepareStatement(sqlSelect);
+		querySt.setString(1, login);
+		querySt.setString(2, pwd);
+		
+		ResultSet rst = querySt.executeQuery();
+		
+		
+		rst.next();
+		if (rst.getBoolean("admin")) {
+			user = new UserModel();
+			user.setFirstname(rst.getString("firstname"));
+			user.setLastname(rst.getString("lastname"));
+			user.setMail(rst.getString("mail"));
+			user.setAge(rst.getInt("age"));
+			user.setLogin(rst.getString("login"));
+			user.setPwd(rst.getString("pwd"));
+			user.setId(rst.getInt("id"));
+			user.setAdmin(rst.getBoolean("admin"));
+		}
+	}
+	catch(SQLException e){
+		e.printStackTrace();
+	}
+	return user;
+}
+
+	
+	
+	
 	public int deleteUser(UserModel user) {
 		// Création de la requête
 		try {
