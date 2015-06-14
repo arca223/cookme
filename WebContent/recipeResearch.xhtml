@@ -12,37 +12,38 @@
 		<ui:define name="content">
 
 			<h:form>
-			
-			
-			 <p:panel id="basic" header="Recipe criterias" >
 
-   				<h:panelGrid columns="2" cellpadding="5">
-					
-					<p:outputLabel for="duration" value="Preparation Duration: " />
-					<p:inputText id="duration" value="#{searchRecipeBean.duration}" converterMessage="Please enter digits only." />
 
-					<h:outputText value="Cook Expertise" />
-					<p:rating value="#{searchRecipeBean.expertise}" />
+				<p:panel id="basic" header="Recipe criterias">
 
-					<h:outputText id="output"
-						value="For #{searchRecipeBean.nbpeople} people" />
-					<h:inputHidden id="txt2" value="#{searchRecipeBean.nbpeople}" />
-					<p:slider minValue="1" maxValue="10" for="txt2" display="output"
-						style="width: 200px" displayTemplate="For {value} people" />
-					
-					<p:outputLabel for="type" value="Cook Type:" />
-					<p:selectOneMenu id="type" value="#{searchRecipeBean.type}"
-						style="width:125px">
-						<f:selectItem itemLabel="Salad" 	itemValue="Salad" />
-						<f:selectItem itemLabel="Meat" 		itemValue="Meal" />
-						<f:selectItem itemLabel="Fish" 		itemValue="Fish" />
-						<f:selectItem itemLabel="Dessert" 	itemValue="Dessert" />
-					</p:selectOneMenu>
+					<h:panelGrid columns="2" cellpadding="5">
 
-					
+						<p:outputLabel for="duration" value="Preparation Duration: " />
+						<p:inputText id="duration" value="#{searchRecipeBean.duration}"
+							converterMessage="Please enter digits only." />
 
-				</h:panelGrid>
-			</p:panel>
+						<h:outputText value="Cook Expertise" />
+						<p:rating value="#{searchRecipeBean.expertise}" />
+
+						<h:outputText id="output"
+							value="For #{searchRecipeBean.nbpeople} people" />
+						<h:inputHidden id="txt2" value="#{searchRecipeBean.nbpeople}" />
+						<p:slider minValue="1" maxValue="10" for="txt2" display="output"
+							style="width: 200px" displayTemplate="For {value} people" />
+
+						<p:outputLabel for="type" value="Cook Type:" />
+						<p:selectOneMenu id="type" value="#{searchRecipeBean.type}"
+							style="width:125px">
+							<f:selectItem itemLabel="Salad" itemValue="Salad" />
+							<f:selectItem itemLabel="Meat" itemValue="Meal" />
+							<f:selectItem itemLabel="Fish" itemValue="Fish" />
+							<f:selectItem itemLabel="Dessert" itemValue="Dessert" />
+						</p:selectOneMenu>
+
+
+
+					</h:panelGrid>
+				</p:panel>
 				<p:dialog widgetVar="dlg" modal="true" resizable="false"
 					header="Values" showEffect="fade">
 					<p:panelGrid id="display" columns="2" columnClasses="label,value">
@@ -50,7 +51,8 @@
 						<h:outputText id="durationValue" value="#{maskView.date}" />
 					</p:panelGrid>
 				</p:dialog>
-				<h:commandButton value="Teach Me!" action="#{recipeControlerBean.getRecipList(searchRecipeBean)}" />
+				<h:commandButton value="Teach Me!"
+					action="#{recipeControlerBean.getRecipList(searchRecipeBean)}" />
 			</h:form>
 
 		</ui:define>

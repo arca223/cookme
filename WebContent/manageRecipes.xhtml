@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Manage Users</title>
+</head>
+
+<body>
+
+	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
+
+		<ui:define name="content">
+
+
+			<h:form id="form">
+				<p:dataTable var="recipe" value="#{recipeList.recipeList}"
+					style="width:60%">
+					<p:column>
+						<f:facet name="header">Title</f:facet>
+			#{recipe.title}
+		</p:column>
+
+					<p:column>
+						<h:commandButton value="Edit"
+							action="#{adminControlerBean.editSelectedRecipe(recipe)}">
+						</h:commandButton>
+						<h:commandButton value="Delete"
+							action="#{adminControlerBean.deleteRecipe(recipe)}">
+						</h:commandButton>
+
+					</p:column>
+				</p:dataTable>
+
+				<h:commandButton value="Add" action="#{adminControlerBean.addNewRecipe}" />
+			</h:form>
+
+			<h:form>
+				<p:outputPanel id="userPanel" style="text-align:center;width:30%;">
+					<p:panelGrid columns="2" rendered="#{not empty editedRecipe}"
+						columnClasses="label,value">
+						<f:facet name="header"></f:facet>
+
+						<h:outputText value="Title:" />
+						<h:inputText value="#{editedRecipe.title}" />
+						<h:outputText value="Prepparation duration:" />
+						<h:inputText value="#{editedRecipe.duration}" />
+						<h:outputText value="expertise:" />
+						<p:rating value="#{editedRecipe.expertise}" />
+						<h:outputText value="Cook Type:" />
+						<p:selectOneMenu id="type" value="#{editedRecipe.type}"
+							style="width:125px">
+							<f:selectItem itemLabel="Salad" itemValue="Salad" />
+							<f:selectItem itemLabel="Meat" itemValue="Meal" />
+							<f:selectItem itemLabel="Fish" itemValue="Fish" />
+							<f:selectItem itemLabel="Dessert" itemValue="Dessert" />
+						</p:selectOneMenu>
+
+						<h:outputText id="output"
+							value="For #{editedRecipe.nbpeople} people" />
+
+						<p:slider minValue="1" maxValue="10" for="txt2" display="output"
+							style="width: 200px" displayTemplate="For {value} people" />
+						<h:outputText value="Description:" />
+						<h:inputTextarea rows="6" cols="30" value="#{editedRecipe.description}" />
+						<h:inputHidden id="txt2" value="#{editedRecipe.nbpeople}" />
+
+
+
+					</p:panelGrid>
+					<h:commandButton value="Save"
+						action="#{adminControlerBean.saveRecipe(editedRecipe)}">
+					</h:commandButton>
+					<h:commandButton value="Close"
+						action="#{adminControlerBean.addNewRecipe()}">
+					</h:commandButton>
+
+
+				</p:outputPanel>
+			</h:form>
+
+
+		</ui:define>
+
+		<ui:define name="footer">
+			<h2>This is page1 Footer</h2>
+		</ui:define>
+
+	</ui:composition>
+
+
+</body>
+
+</html>

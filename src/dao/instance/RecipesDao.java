@@ -27,6 +27,30 @@ public class RecipesDao {
 		dB_PWD = DB_PWD;
 	}
 
+	public void updateRecipe(RecipeModel recipe) {
+		// Création de la requête
+		try {
+			// create connection
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+			//
+			String sqlInsert = "UPDATE recipes SET title=?,description=?,expertise=?,nbpeople=?,duration=?,type=? WHERE id=?";
+			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
+			querySt.setString(1, recipe.getTitle());
+			querySt.setString(2, recipe.getDescription());
+			querySt.setInt(3, recipe.getExpertise());
+			querySt.setInt(4, recipe.getNbpeople());
+			querySt.setInt(5, recipe.getDuration());
+			querySt.setString(6, recipe.getType());
+			querySt.setInt(7, recipe.getId());
+
+			querySt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void addRecipe(RecipeModel recipe) {
 		// Création de la requête
 		try {
@@ -34,8 +58,8 @@ public class RecipesDao {
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 			//
-			String sqlInsert = "INSERT INTO cookme.recipes (title, description, expertise, nbpeople, duration, type) VALUES (?,?,?,?,?,?)";
-			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
+			String sqlUpdate = "INSERT INTO cookme.recipes (title, description, expertise, nbpeople, duration, type) VALUES (?,?,?,?,?,?)";
+			PreparedStatement querySt = connection.prepareStatement(sqlUpdate);
 			querySt.setString(1, recipe.getTitle());
 			querySt.setString(2, recipe.getDescription());
 			querySt.setInt(3, recipe.getExpertise());
@@ -49,7 +73,27 @@ public class RecipesDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteRecipe(RecipeModel recipe) {
+		// Création de la requête
+		try {
+			// create connection
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+			//
+			String sqlDelete = "DELETE FROM recipes WHERE id=?";
+			PreparedStatement querySt = connection.prepareStatement(sqlDelete);
+			querySt.setInt(1, recipe.getId());
 
+			querySt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	public RecipeListModelBean getAllRecipes() {
 		java.sql.Statement query;
 		RecipeModel recipe;
