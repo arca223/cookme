@@ -67,7 +67,6 @@ public class RecipeControlerBean {
 
 		
 		sessionMap.put("commentList", clist);
-		UserModel user = (UserModel) sessionMap.get("loggedUser");
 		
 		return "recipe.jsf";
 	}
@@ -78,8 +77,7 @@ public class RecipeControlerBean {
 		UserModel user = (UserModel) sessionMap.get("loggedUser");
 		RecipeModel recipe = (RecipeModel) sessionMap.get("selectedRecipe");
 		
-		System.out.println(user.toString());
-		System.out.println(recipe.toString());
+
 		
 		if(user !=null){
 			comment.setUser_id(user.getId());

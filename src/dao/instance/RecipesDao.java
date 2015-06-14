@@ -128,12 +128,10 @@ public class RecipesDao {
 			}
 			if (criterias.getType().length() > 0) {
 				querySt.setString(i, criterias.getType());
-				System.out.println(criterias.getType() + " " + i);
 				i++;
 			}
 			if (criterias.getDuration() > 0) {
 				querySt.setInt(i, criterias.getDuration());
-				System.out.println(criterias.getDuration() + " " + i);
 			}
 
 			ResultSet rst = querySt.executeQuery();

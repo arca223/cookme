@@ -82,3 +82,10 @@ aside{
 .inaside{
 	display: block;
 }
+
+.activity{
+	display : block
+	background-color: orange;
+	height: 100%
+}
+

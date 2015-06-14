@@ -61,7 +61,6 @@ public class CommentModel {
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date dateobj = new Date();
-		System.out.println(df.format(dateobj));
 	}
 
 	public int getRate() {

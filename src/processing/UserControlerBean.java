@@ -3,15 +3,12 @@ package processing;
 import java.util.ArrayList;
 import java.util.Map;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import model.LoginBean;
-import model.RecipeListModelBean;
-import model.RecipeModel;
 import model.UserListModelBean;
 import model.UserModel;
 import model.UserSubmissionModelBean;
@@ -46,7 +43,6 @@ public class UserControlerBean {
 	public String checkUser(LoginBean loginBean) {	
 		
 		UserModel user = this.userDao.checkUser(loginBean.getLogin(),loginBean.getPwd());
-		System.out.println(user.toString());
 		if (user != null) {
 			// récupère l'espace de mémoire de JSF
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
