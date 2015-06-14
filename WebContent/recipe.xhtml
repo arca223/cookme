@@ -13,26 +13,14 @@
 			
 	        <f:facet name="header"> Recipes zzzzzzzzzzzzzzzzzzzzzz</f:facet>
 			
-			<p:panel header="Salad nicoise#{recipe.title}" style="text-align:center"> 
+			<p:panel header="#{selectedRecipe.title}" style="text-align:center"> 
 			
 		        <aside>
-		        	<h:outputText style="display: block;" value="#{recipe.description} salad" />
-	               	<h:outputText style="display: block;" value="#{recipe.duration} 10min" />
-	               	<h:outputText style="display: block;" value="#{recipe.nbpeople} 4people" />
-	               	<p:rating 	  value="#{recipe.expertise}" readonly="true" />
-	               	<h:outputText value="#{recipe.description}" />
+	               	<h:outputText style="display: block;" value="#{selectedRecipe.duration}" />
+	               	<h:outputText style="display: block;" value="#{selectedRecipe.nbpeople}" />
+	               	<p:rating 	  value="#{selectedRecipe.expertise}" readonly="true" />
 				</aside>
-				<p>Ex turba vero imae sortis et paupertinae in tabernis aliqui pernoctant vinariis, non nulli 
-				velariis umbraculorum theatralium latent, quae Campanam imitatus lasciviam Catulus in aedilitate 
-				sua suspendit omnium primus; aut pugnaciter aleis certant turpi sono fragosis naribus introrsum 
-				reducto spiritu concrepantes; aut quod est studiorum omnium maximum ab ortu lucis ad vesperam sole 
-				fatiscunt vel pluviis, per minutias aurigarum equorumque praecipua vel delicta scrutantes.<BR />
-
-				Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam 
-				Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis, inflammatrix 
-				saevientis adsidua, humani cruoris avida nihil mitius quam maritus; qui paulatim eruditiores facti processu 
-				temporis ad nocendum per clandestinos versutosque rumigerulos conpertis leviter addere quaedam male suetos falsa 
-				et placentia sibi discentes, adfectati regni vel artium nefandarum calumnias insontibus adfligebant.</p>
+				<p>#{selectedRecipe.description}</p>
 	        </p:panel>
 
 			<p:panel header="Comment" style="text-align:center"> 

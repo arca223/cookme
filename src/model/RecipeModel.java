@@ -1,6 +1,13 @@
 package model;
 
-public class RecipeModel {
+import java.io.Serializable;
+
+public class RecipeModel implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 178266335902170455L;
+	
 	private int id;
 	private String title;
 	private String description;

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import model.RecipeListModelBean;
 import model.RecipeModel;
@@ -21,6 +20,7 @@ public class RecipesDao {
 
 	public RecipesDao(String DB_HOST, String DB_PORT, String DB_NAME,
 			String DB_USER, String DB_PWD) {
+		dB_HOST = DB_HOST;
 		dB_PORT = DB_PORT;
 		dB_NAME = DB_NAME;
 		dB_USER = DB_USER;
@@ -93,6 +93,8 @@ public class RecipesDao {
 	public RecipeListModelBean getRecipesByCriterias(SearchRecipeBean criterias) {
 		RecipeModel recipe;
 
+		
+
 		RecipeListModelBean recipeList = new RecipeListModelBean();
 		// Création de la requête
 		try {
@@ -111,7 +113,6 @@ public class RecipesDao {
 			sqlSelect = (criterias.getDuration() > 0) ? sqlSelect
 					+ " AND duration = ?" : sqlSelect;
 			
-			System.out.println(sqlSelect);
 			
 			PreparedStatement querySt = connection.prepareStatement(sqlSelect);
 

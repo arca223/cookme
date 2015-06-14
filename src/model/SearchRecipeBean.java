@@ -1,20 +1,38 @@
 package model;
 
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class SearchRecipeBean {
+public class SearchRecipeBean implements Serializable {
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1897074829530405405L;
 	
 	private int expertise;
 	private int nbpeople;
 	private int duration;
 	private String type;
 	
+	
 
 	public SearchRecipeBean(){	
+	}
+	
+	public SearchRecipeBean(int expertise, int nbpeople, int duration,
+			String type) {
+		super();
+		this.expertise = expertise;
+		this.nbpeople = nbpeople;
+		this.duration = duration;
+		this.type = type;
 	}
 	
 	public int getExpertise() {

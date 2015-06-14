@@ -1,10 +1,9 @@
 package processing;
 
-import java.util.ArrayList;
 import java.util.Map;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -15,7 +14,7 @@ import dao.fabric.DaoFabric;
 import dao.instance.RecipesDao;
 
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class RecipeControlerBean {
 	private RecipesDao recipeDao;
 
@@ -49,5 +48,18 @@ public class RecipeControlerBean {
 
 		return "recipeResult.jsf";
 
+	}
+	
+	public String getRecipe(RecipeModel recipe){
+		
+		System.out.println(recipe.toString());
+		
+		
+		// récupère l'espace de mémoire de JSF
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("selectedRecipe", recipe);
+		
+		return "recipe.jsf";
 	}
 }

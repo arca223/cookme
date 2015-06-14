@@ -23,10 +23,11 @@
                         <h:panelGrid columns="1" style="width:100%">
 
                             <h:outputText value="Expertise:" />
-                                <p:rating value="#{recipe.expertise}" readonly="true" />
-                                <h:outputText value="duration #{recipe.duration} min" />
-                                <h:outputText value="#{recipe.nbpeople} people" />
+                            <p:rating value="#{recipe.expertise}" readonly="true" />
+                            <h:outputText value="duration #{recipe.duration} min" />
+                            <h:outputText value="#{recipe.nbpeople} people" />
                             <h:outputText value="#{recipe.description}" />
+                            <h:commandButton value="test" action="#{recipeControlerBean.getRecipe(recipe)}" />
 
                         </h:panelGrid>
                     </p:panel>
