@@ -50,11 +50,8 @@ public class UserControlerBean {
 			// place l'utilisateur dans l'espace de mémoire de JSF
 			sessionMap.put("loggedUser", user);
 			// redirect the current page
-			return "userDisplay.xhtml";
-		} else {
-			// redirect the current page
-			return "identification.xhtml";
-		}
+		} 
+		return "menu.jsf";
 	}
 
 	public String checkAndAddUser(UserSubmissionModelBean userSubmitted) {
@@ -86,7 +83,6 @@ public class UserControlerBean {
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		// place la liste de recette dans l'espace de mémoire de JSF
 		sessionMap.remove("loggedUser");
-		System.out.println("test");
 		return "menu.jsf";
 	}
 

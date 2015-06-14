@@ -19,7 +19,9 @@
 		<ui:define name="content">
 
 			<f:facet name="header"></f:facet>
-
+			<h:form>
+				<h:commandButton style="float:right" value="Back" onclick="history.go(-1)"/>
+			</h:form>
 			<p:panel header="#{selectedRecipe.title}" style="text-align:center">
 
 				<aside>
@@ -30,16 +32,15 @@
 						value="#{selectedRecipe.nbpeople}" />
 					<i class="fa fa-pencil-square-o"></i><p:rating value="#{selectedRecipe.expertise}" readonly="true" />
 				</aside>
-				<p>#{selectedRecipe.description}</p>
+				<p style="padding:10px">#{selectedRecipe.description}</p>
 			</p:panel>
-
 			<p:panel header="Comment" style="text-align:center">
 				<ui:repeat var="comment" value="#{commentList.commentList}">
-					<div class="ui-grid ui-grid-responsive">
+					<div style="padding-top:10px;padding-bottom:10px" class="ui-grid ui-grid-responsive">
 						<div class="ui-grid-row">
 							<div class="ui-grid-col-1">#{comment.login}</div>
 							<div class="ui-grid-col-2">#{comment.commentDate}</div>
-							<div class="ui-grid-col-7">#{comment.comment}</div>
+							<div class="ui-grid-col-7"><div class="comment">#{comment.comment}</div></div>
 							<div class="ui-grid-col-2">
 								<p:rating value="#{comment.rate}" readonly="true" />
 							</div>

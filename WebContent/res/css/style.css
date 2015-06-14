@@ -96,3 +96,7 @@ aside{
     margin-left: auto;
     margin-right: auto;
 }
+
+.comment{
+	text-align: justify;
+}
