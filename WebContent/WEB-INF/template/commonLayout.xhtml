@@ -5,32 +5,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:head>
-		<link rel="stylesheet" type="text/css" href="res/css/style.css" />
-		<title>CookMe Website</title>
-	</h:head>
+<h:head>
+	<link rel="stylesheet" type="text/css" href="res/css/style.css" />
+	<title>CookMe Website</title>
+</h:head>
 
-	<h:body>
+<h:body>
 
-		<div id="header">
-			<ui:insert name="header">
-				<ui:include src="commonHeader.xhtml" />
-			</ui:insert>
-		</div>
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="commonHeader.xhtml" />
+		</ui:insert>
+	</div>
 
-		<div id="content">
-				<ui:insert name="content">
-					<ui:include src="commonContent.xhtml" />
-				</ui:insert>
-				 <div class="push"></div>
-		</div>
+	<div id="content">
+		<ui:insert name="content">
+			<ui:include src="commonContent.xhtml" />
+		</ui:insert>
+		<div class="push"></div>
+	</div>
 
-		<div id="footer">
-			<ui:insert name="footer">
-				<ui:include src="commonFooter.xhtml" />
-			</ui:insert>
-		</div>
+	<div id="footer">
+		<ui:insert name="footer">
+			<ui:include src="commonFooter.xhtml" />
+		</ui:insert>
+	</div>
 
 
-	</h:body>
+</h:body>
 </html>

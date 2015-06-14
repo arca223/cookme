@@ -15,6 +15,7 @@ public class UserModel implements Serializable {
 	private int age;
 	private String login;
 	private String pwd;
+	private int id;
 	private int admin;
 
 	// Contrainte BEAN constructeur sans paramètre
@@ -83,4 +84,14 @@ public class UserModel implements Serializable {
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 }

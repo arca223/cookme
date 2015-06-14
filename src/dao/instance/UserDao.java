@@ -80,6 +80,7 @@ public class UserDao {
 				user.setLogin(rst.getString("login"));
 				user.setPwd(rst.getString("pwd"));
 				user.setAdmin(rst.getInt("admin"));
+				user.setId(rst.getInt("id"));
 				
 
 				userList.add(user);
@@ -118,6 +119,7 @@ public class UserDao {
 				user.setAge(rst.getInt("age"));
 				user.setLogin(rst.getString("login"));
 				user.setPwd(rst.getString("pwd"));
+				user.setId(rst.getInt("id"));
 
 			}
 		}

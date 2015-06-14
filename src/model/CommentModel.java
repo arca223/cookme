@@ -1,5 +1,9 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class CommentModel {
 
 	private int user_id;
@@ -54,6 +58,10 @@ public class CommentModel {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date dateobj = new Date();
+		System.out.println(df.format(dateobj));
 	}
 
 	public int getRate() {
