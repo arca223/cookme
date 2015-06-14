@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head></h:head>
 <h:body>
 
-    <ui:composition template="WEB-INF/template/commonLayout.xhtml">
+	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
 
-        <ui:define name="content">
+		<ui:define name="content">
 
-            <h:form id="form">
-                <p:dataGrid var="recipe" value="#{resultRecipe.recipeList}" columns="3"
-                    layout="grid" rows="12" paginator="true" id="recipes"
-                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                    rowsPerPageTemplate="6,12,16">
+			<h:form id="form">
+				<p:dataGrid var="recipe" value="#{resultRecipe.recipeList}"
+					columns="3" layout="grid" rows="12" paginator="true" id="recipes"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="6,12,16">
 
-                    <f:facet name="header"> Recipes</f:facet>
+					<f:facet name="header"> Recipes</f:facet>
 
-                    <p:panel header="#{recipe.title}" style="text-align:center">
-                        <h:panelGrid columns="1" style="width:100%">
+					<p:panel header="#{recipe.title}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
 
-                            <h:outputText value="Expertise:" />
-                            <p:rating value="#{recipe.expertise}" readonly="true" />
-                            <h:outputText value="duration #{recipe.duration} min" />
-                            <h:outputText value="#{recipe.nbpeople} people" />
-                            <h:inputTextarea  rows="5" cols="30" readonly="true" value="#{recipe.description}"  style="border-color: white"  />
-                            <h:commandButton value="detail" action="#{recipeControlerBean.getRecipe(recipe)}" />
+							<h:outputText value="Expertise:" />
+							<p:rating value="#{recipe.expertise}" readonly="true" />
+							<h:outputText value="duration #{recipe.duration} min" />
+							<h:outputText value="#{recipe.nbpeople} people" />
+							<h:inputTextarea rows="5" cols="30" readonly="true"
+								value="#{recipe.description}" style="border-color: white" />
+							<h:commandButton value="detail"
+								action="#{recipeControlerBean.getRecipe(recipe)}" />
 
-                        </h:panelGrid>
-                    </p:panel>
+						</h:panelGrid>
+					</p:panel>
 
-                </p:dataGrid>
-            </h:form>
-
-
+				</p:dataGrid>
+			</h:form>
 
 
 
-        </ui:define>
 
-        <ui:define name="footer">
-            <h2>This is page1 Footer</h2>
-        </ui:define>
 
-    </ui:composition>
+		</ui:define>
+
+		<ui:define name="footer">
+			<h2>This is page1 Footer</h2>
+		</ui:define>
+
+	</ui:composition>
 
 </h:body>
 

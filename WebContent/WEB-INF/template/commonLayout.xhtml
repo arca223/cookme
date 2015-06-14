@@ -25,38 +25,38 @@
 			<div class="ui-grid-col-8">
 				<ui:insert name="connexion">
 					<!--<c:if test="#{empty loggedUser}">  -->
-						<div class="ui-grid ui-grid-responsive" style="float: right;">
-							<div class="ui-grid-row">
-								<h:form>
-									<div class="ui-grid-col-3">
-										<p:inputText id="login" size="10" value="#{loginBean.login}"
-											required="false" placeholder="Login" label="login">
-										</p:inputText>
-										<p:tooltip id="toolTipLogin" for="login"
-											value="On précise ici les contraintes de saisie du login"
-											showEffect="clip" hideEffect="explode" />
-										<p:message for="login" display="icon" />
-									</div>
-									<div class="ui-grid-col-3">
-										<p:password id="password" size="10" value="#{loginBean.pwd}"
-											placeholder="Password" />
-										<p:message for="password" display="icon" />
-										<p:tooltip id="toolTipPassword" for="password"
-											value="On précise ici les contraintes de saisie du password"
-											showEffect="clip" hideEffect="explode" />
-									</div>
-									<div class="ui-grid-col-3">
-										<p:commandButton value="Connexion"
-											action="#{userControlerBean.checkUser(loginBean)}" />
-									</div>
-									<div class="ui-grid-col-3">
-										<p:button value="Inscription" icon="ui-icon-plusthick">
-											<f:param name="param1" value="valueparam1" />
-										</p:button>
-									</div>
-								</h:form>
-							</div>
+					<div class="ui-grid ui-grid-responsive" style="float: right;">
+						<div class="ui-grid-row">
+							<h:form>
+								<div class="ui-grid-col-3">
+									<p:inputText id="login" size="10" value="#{loginBean.login}"
+										required="false" placeholder="Login" label="login">
+									</p:inputText>
+									<p:tooltip id="toolTipLogin" for="login"
+										value="On précise ici les contraintes de saisie du login"
+										showEffect="clip" hideEffect="explode" />
+									<p:message for="login" display="icon" />
+								</div>
+								<div class="ui-grid-col-3">
+									<p:password id="password" size="10" value="#{loginBean.pwd}"
+										placeholder="Password" />
+									<p:message for="password" display="icon" />
+									<p:tooltip id="toolTipPassword" for="password"
+										value="On précise ici les contraintes de saisie du password"
+										showEffect="clip" hideEffect="explode" />
+								</div>
+								<div class="ui-grid-col-3">
+									<p:commandButton value="Connexion"
+										action="#{userControlerBean.checkUser(loginBean)}" />
+								</div>
+								<div class="ui-grid-col-3">
+									<p:button value="Inscription" icon="ui-icon-plusthick">
+										<f:param name="param1" value="valueparam1" />
+									</p:button>
+								</div>
+							</h:form>
 						</div>
+					</div>
 					<!-- </c:if> -->
 				</ui:insert>
 			</div>
