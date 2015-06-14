@@ -13,7 +13,7 @@
 		<ui:define name="headerTitle">
 			<h1 style="background-color: #31b0d5">Recipes</h1>
 		</ui:define>
-		
+
 		<ui:define name="content">
 
 			<h:form id="form">
@@ -25,23 +25,45 @@
 					<f:facet name="header"> Recipes</f:facet>
 
 					<p:panel header="#{recipe.title}" style="text-align:center">
-						<h:panelGrid columns="1" style="width:100%">
+						<div class="ui-grid ui-grid-responsive">
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-12">
+									<i class="fa fa-yelp"></i>
+									<h:outputText value=" #{recipe.type}" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-12">
+									<i class="fa fa-clock-o"></i>
+									<h:outputText value=" #{recipe.duration} min" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-12">
+									<i class="fa fa-users"></i>
+									<h:outputText value=" #{recipe.nbpeople} people" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-12">
+									<i class="fa fa-pencil-square-o"></i>
+									<h:outputText value=" Expertise:" />
+									<p:rating value="#{recipe.expertise}" readonly="true" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-12">
+									<h:commandButton value="detail"
+										action="#{recipeControlerBean.getRecipe(recipe)}" />
 
-							<h:outputText value="Expertise:" />
-							<p:rating value="#{recipe.expertise}" readonly="true" />
-							<h:outputText value="duration #{recipe.duration} min" />
-							<h:outputText value="#{recipe.nbpeople} people" />
-							<h:inputTextarea rows="5" cols="30" readonly="true"
-								value="#{recipe.description}" style="border-color: white" />
-							<h:commandButton value="detail"
-								action="#{recipeControlerBean.getRecipe(recipe)}" />
+								</div>
+							</div>
+						</div>
 
-						</h:panelGrid>
 					</p:panel>
 
 				</p:dataGrid>
 			</h:form>
-
 
 
 
