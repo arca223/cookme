@@ -58,5 +58,12 @@ public class AdminControlerBean {
 		return Integer.toString(ret);
 	}
 	
+	public void closeTab() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance()
+				.getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.remove("selectedUser");
+	}
+	
 	
 }

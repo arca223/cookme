@@ -14,7 +14,7 @@
 
 <ui:define name="content">
 			
-
+<div>
 <h:form id="form">
 	<p:dataTable var="user" value="#{users.userList}" style="width:60%">
 		<p:column>
@@ -36,7 +36,6 @@
 		</p:column>
 	</p:dataTable>
 </h:form>	     
- <p:commandButton value="Add" action="#" />
 
 <h:form>
 	<p:outputPanel id="userPanel" style="text-align:center;width:30%;">
@@ -52,21 +51,17 @@
 	         <h:outputText value="age:" />
 	         <h:inputText value="#{selectedUser.age}" />
 	         <h:outputText value="login:" />
-	         <h:in	putText value="#{selectedUser.login}" />
-	         <h:outputText value="password" />
-	         <p:password value="#{selectedUser.pwd}" />
+	         <h:inputText value="#{selectedUser.login}" />
 	         
-	         
-	               
 	
 	 	 	</p:panelGrid>
-	 	 	<h:commandButton value="Save" action="#{adminControlerBean.saveUser(user)}"> </h:commandButton>
+	 	 	<h:commandButton value="Save" action="#{adminControlerBean.saveUser(selectedUser)}"> </h:commandButton>
 	    	<h:commandButton value="Close" action="#{adminControlerBean.closeTab()}"> </h:commandButton>
 	           
 	
 	</p:outputPanel>
 </h:form>		
-			
+</div>		
 		
 </ui:define>
 

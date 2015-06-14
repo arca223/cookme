@@ -168,7 +168,7 @@ public class UserDao {
 			querySt.setInt(3, user.getAge());
 			querySt.setString(4, user.getMail());
 			querySt.setString(5, user.getLogin());
-			querySt.setString(6, user.getPwd());
+			querySt.setInt(6, user.getId());
 
 			int res = querySt.executeUpdate();
 			connection.close();
