@@ -19,6 +19,7 @@ import processing.RecipeControlerBean;
 public class AdminControlerBean {
 
 	private int addRecipe = 0;
+	private int addUser = 0;
 	private RecipeControlerBean recipeControler;
 	public AdminControlerBean(){}
 	
@@ -45,6 +46,7 @@ public class AdminControlerBean {
 	}
 	
 	public String editSelectedUser(UserModel user) {
+		addUser = 0;
 		ExternalContext externalContext = FacesContext.getCurrentInstance()
 				.getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
@@ -61,7 +63,12 @@ public class AdminControlerBean {
 	
 	public String saveUser(UserModel user) {
 		UserControlerBean u = new UserControlerBean();
-		int ret = u.updateUser(user);
+		int ret = 0;
+		if (this.addUser==0) {
+			ret = u.updateUser(user);
+		} else {
+			ret = u.addUser(user);
+		}		
 		u.getAllUsers();
 		return Integer.toString(ret);
 	}
@@ -71,6 +78,14 @@ public class AdminControlerBean {
 				.getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.remove("selectedUser");
+	}	
+	
+	public void newUser() {
+		this.addUser = 1;
+		ExternalContext externalContext = FacesContext.getCurrentInstance()
+				.getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("selectedUser", new UserModel("","","",0,"","",false));
 	}
 	
 	

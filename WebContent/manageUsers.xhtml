@@ -27,7 +27,7 @@
 		</p:column>
 		<p:column>
 			<f:facet name="header">Admin</f:facet>
-			#{user.admin}
+			<p:selectBooleanCheckbox value="#{user.admin}" disabled="true" />
 		</p:column>
 		<p:column>
 			<h:commandButton value="Edit" action="#{adminControlerBean.editSelectedUser(user)}"> </h:commandButton>
@@ -35,6 +35,7 @@
 		
 		</p:column>
 	</p:dataTable>
+	<h:commandButton value="Add" action="#{adminControlerBean.newUser()}"></h:commandButton>
 </h:form>	     
 
 <h:form>
@@ -52,6 +53,11 @@
 	         <h:inputText value="#{selectedUser.age}" />
 	         <h:outputText value="login:" />
 	         <h:inputText value="#{selectedUser.login}" />
+	         <h:outputText value="password:" />
+	         <p:password value="#{selectedUser.pwd}" redisplay="true" />
+	         <h:outputText value="admin:" />
+	         <p:selectBooleanCheckbox value="#{selectedUser.admin}" />
+	         
 	         
 	
 	 	 	</p:panelGrid>
@@ -60,6 +66,7 @@
 	           
 	
 	</p:outputPanel>
+	
 </h:form>		
 </div>		
 		

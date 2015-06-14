@@ -32,7 +32,7 @@ public class UserDao {
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 
-			String sqlInsert = "INSERT INTO users(firstname, lastname, age, mail, login, pwd) VALUES (?,?,?,?,?,?)";
+			String sqlInsert = "INSERT INTO users(firstname, lastname, age, mail, login, pwd, admin) VALUES (?,?,?,?,?,?,?)";
 			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
 
 			querySt.setString(1, user.getFirstname());
@@ -41,6 +41,7 @@ public class UserDao {
 			querySt.setString(4, user.getMail());
 			querySt.setString(5, user.getLogin());
 			querySt.setString(6, user.getPwd());
+			querySt.setBoolean(7, user.getAdmin());
 
 			int res = querySt.executeUpdate();
 			connection.close();
@@ -79,7 +80,7 @@ public class UserDao {
 				user.setAge(rst.getInt("age"));
 				user.setLogin(rst.getString("login"));
 				user.setPwd(rst.getString("pwd"));
-				user.setAdmin(rst.getInt("admin"));
+				user.setAdmin(rst.getBoolean("admin"));
 				user.setId(rst.getInt("id"));
 				
 
@@ -160,7 +161,7 @@ public class UserDao {
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 
-			String sqlInsert = "UPDATE `users` SET firstname=?, lastname=?, age=?, mail=?, login=? where id=?";
+			String sqlInsert = "UPDATE `users` SET firstname=?, lastname=?, age=?, mail=?, login=?, pwd=?, admin=? where id=?";
 			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
 
 			querySt.setString(1, user.getFirstname());
@@ -168,7 +169,9 @@ public class UserDao {
 			querySt.setInt(3, user.getAge());
 			querySt.setString(4, user.getMail());
 			querySt.setString(5, user.getLogin());
-			querySt.setInt(6, user.getId());
+			querySt.setString(6, user.getPwd());
+			querySt.setBoolean(7, user.getAdmin());
+			querySt.setInt(8, user.getId());
 
 			int res = querySt.executeUpdate();
 			connection.close();

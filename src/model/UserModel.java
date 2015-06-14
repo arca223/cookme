@@ -16,10 +16,19 @@ public class UserModel implements Serializable {
 	private String login;
 	private String pwd;
 	private int id;
-	private int admin;
+	private boolean admin;
 
 	// Contrainte BEAN constructeur sans paramètre
 	public UserModel() {
+	}
+	public UserModel(String firstname, String lastname, String mail, int age, String login, String pwd, boolean admin) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.mail = mail;
+		this.age = age;
+		this.login = login;
+		this.pwd = pwd;
+		this.admin = admin;
 	}
 
 	public String getLastname() {
@@ -77,11 +86,11 @@ public class UserModel implements Serializable {
 		this.mail = mail;
 	}
 
-	public int getAdmin() {
+	public boolean getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(int admin) {
+	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 

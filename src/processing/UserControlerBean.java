@@ -81,5 +81,9 @@ public class UserControlerBean {
 		return ret;	
 	}
 	
+	public int addUser(UserModel user) {
+		int ret = this.userDao.addUser(user);
+		return ret;
+	}
 	
 }
