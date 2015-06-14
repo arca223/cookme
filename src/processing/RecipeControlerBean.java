@@ -77,7 +77,6 @@ public class RecipeControlerBean {
 		UserModel user = (UserModel) sessionMap.get("loggedUser");
 		RecipeModel recipe = (RecipeModel) sessionMap.get("selectedRecipe");
 		
-
 		
 		if(user !=null){
 			comment.setUser_id(user.getId());

@@ -71,7 +71,15 @@ public class UserControlerBean {
 		}
 	}
 	
+	public int delUser(UserModel user){
+		int ret = this.userDao.deleteUser(user);
+		return ret;		
+	}
 	
+	public int updateUser(UserModel user) {
+		int ret = this.userDao.updateUser(user);
+		return ret;	
+	}
 	
 	
 }

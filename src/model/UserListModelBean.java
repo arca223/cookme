@@ -13,7 +13,6 @@ public class UserListModelBean {
 
 	
 	private List<UserModel> userList;
-	private UserModel selectedUser;
 	
 	public UserListModelBean() {		
 		userList = new ArrayList<UserModel>();
@@ -27,13 +26,9 @@ public class UserListModelBean {
 		this.userList.add(user);
 	}
 
-	public UserModel getSelectedUser() {
-		return selectedUser;
-	}
 
-	public void setSelectedUser(UserModel selectedUser) {
-		this.selectedUser = selectedUser;
-	}
+	
+	
 	
 }
 
