@@ -116,6 +116,13 @@ public class AdminControlerBean {
 		return "manageRecipes.jsf";
 	}
 	
-	
+	public String closeRecipeTab() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance()
+				.getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.remove("editedRecipe");
+		
+		return "manageRecipes.jsf";
+	}
 	
 }
