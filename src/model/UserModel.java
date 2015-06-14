@@ -86,4 +86,5 @@ public class UserModel implements Serializable {
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
+
 }

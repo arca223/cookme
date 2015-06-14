@@ -125,4 +125,57 @@ public class UserDao {
 		}
 		return user;
 	}
+	
+	public int deleteUser(UserModel user) {
+		// Création de la requête
+		try {
+			// create connection
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+
+			String sqlInsert = "DELETE FROM `users` WHERE login=?";
+			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
+
+			querySt.setString(1, user.getLogin());
+
+			int res = querySt.executeUpdate();
+			connection.close();
+			
+			return res;
+		} catch (SQLException e) {
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
+			return 0;
+		}
+	}
+	
+	
+	public int updateUser(UserModel user) {
+		// Création de la requête
+		try {
+			// create connection
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+
+			String sqlInsert = "UPDATE `users` SET firstname=?, lastname=?, age=?, mail=?, login=? where id=?";
+			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
+
+			querySt.setString(1, user.getFirstname());
+			querySt.setString(2, user.getLastname());
+			querySt.setInt(3, user.getAge());
+			querySt.setString(4, user.getMail());
+			querySt.setString(5, user.getLogin());
+			querySt.setString(6, user.getPwd());
+
+			int res = querySt.executeUpdate();
+			connection.close();
+			
+			return res;
+		} catch (SQLException e) {
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
+			return 0;
+		}
+	}
+	
 }

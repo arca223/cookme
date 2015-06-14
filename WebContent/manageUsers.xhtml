@@ -10,71 +10,71 @@
 
 <body>
 
-	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
+<ui:composition template="WEB-INF/template/commonLayout.xhtml">
 
-		<ui:define name="content">
+<ui:define name="content">
 			
-			
-<h:form style="width:60%">
-<p:dataTable id="table-users" var="user" value="#{users.userList}">
-	<p:column>
-		<f:facet name="header">Name</f:facet>
-		#{user.lastname}
-	</p:column>
-	<p:column>
-		<f:facet name="header">Login</f:facet>
-		#{user.login}
-	</p:column>
-	<p:column>
-		<f:facet name="header">Admin</f:facet>
-		#{user.admin}
-	</p:column>
-	<p:column>
-		<p:commandButton value="Edit" update=":form:userPanel" oncomplete="PF('userDialog').show()" title="View Detail">
-        <f:setPropertyActionListener value="#{users}" target="#{userListModelBean.selectedUser}" />
-        </p:commandButton>
-		<p:commandButton value="Delete" action="#" />
-	</p:column>
-</p:dataTable>
 
+<h:form id="form">
+	<p:dataTable var="user" value="#{users.userList}" style="width:60%">
+		<p:column>
+			<f:facet name="header">Name</f:facet>
+			#{user.lastname}
+		</p:column>
+		<p:column>
+			<f:facet name="header">Login</f:facet>
+			#{user.login}
+		</p:column>
+		<p:column>
+			<f:facet name="header">Admin</f:facet>
+			#{user.admin}
+		</p:column>
+		<p:column>
+			<h:commandButton value="Edit" action="#{adminControlerBean.editSelectedUser(user)}"> </h:commandButton>
+			<h:commandButton value="Delete" action="#{adminControlerBean.deleteUser(user)}"> </h:commandButton>
+		
+		</p:column>
+	</p:dataTable>
+</h:form>	     
+ <p:commandButton value="Add" action="#" />
+
+<h:form>
+	<p:outputPanel id="userPanel" style="text-align:center;width:30%;">
+		<p:panelGrid  columns="2" rendered="#{not empty selectedUser}" columnClasses="label,value">
+	         <f:facet name="header"></f:facet>
 	
-        
-            
-    <p:commandButton value="Add" action="#" />
-</h:form>
-
-
-<h:form id="form" style="width:30%">
-<p:outputPanel id="userPanel" style="text-align:center;">
-<p:panelGrid  columns="2" rendered="#{not empty userListModelBean.selectedUser}" columnClasses="label,value">
-                <f:facet name="header"></f:facet>
- 
-                <h:outputText value="firstname:" />
-                <h:outputText value="#{userListModelBean.selectedUser.firstname}" />
-                <h:outputText value="lastname:" />
-                <h:outputText value="#{userListModelBean.selectedUser.lastname}" />
-                <h:outputText value="mail:" />
-                <h:outputText value="#{userListModelBean.selectedUser.mail}" />
-                <h:outputText value="age:" />
-                <h:outputText value="#{userListModelBean.selectedUser.age}" />
-                <h:outputText value="login:" />
-                <h:outputText value="#{userListModelBean.selectedUser.login}" />
-                <h:outputText value="password" />
-                <p:password value="#{userListModelBean.selectedUser.password}" />
-                
- 
-            </p:panelGrid>
-        </p:outputPanel>
-</h:form>			
+	         <h:outputText value="firstname:" />
+	         <h:inputText value="#{selectedUser.firstname}" />
+	         <h:outputText value="lastname:" />
+	         <h:inputText value="#{selectedUser.lastname}" />
+	         <h:outputText value="mail:" />
+	         <h:inputText value="#{selectedUser.mail}" />
+	         <h:outputText value="age:" />
+	         <h:inputText value="#{selectedUser.age}" />
+	         <h:outputText value="login:" />
+	         <h:in	putText value="#{selectedUser.login}" />
+	         <h:outputText value="password" />
+	         <p:password value="#{selectedUser.pwd}" />
+	         
+	         
+	               
+	
+	 	 	</p:panelGrid>
+	 	 	<h:commandButton value="Save" action="#{adminControlerBean.saveUser(user)}"> </h:commandButton>
+	    	<h:commandButton value="Close" action="#{adminControlerBean.closeTab()}"> </h:commandButton>
+	           
+	
+	</p:outputPanel>
+</h:form>		
 			
 		
-		</ui:define>
+</ui:define>
 
-		<ui:define name="footer">
-			<h2>This is page1 Footer</h2>
-		</ui:define>
+<ui:define name="footer">
+	<h2>This is page1 Footer</h2>
+</ui:define>
 
-	</ui:composition>
+</ui:composition>
 
 
 </body>
