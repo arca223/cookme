@@ -23,11 +23,12 @@
 			<p:panel header="#{selectedRecipe.title}" style="text-align:center">
 
 				<aside>
-					<h:outputText style="display: block;"
+				
+					<i class="fa fa-clock-o"></i><h:outputText style="display: block;"
 						value="#{selectedRecipe.duration}" />
-					<h:outputText style="display: block;"
+					<i class="fa fa-users"></i><h:outputText style="display: block;"
 						value="#{selectedRecipe.nbpeople}" />
-					<p:rating value="#{selectedRecipe.expertise}" readonly="true" />
+					<i class="fa fa-pencil-square-o"></i><p:rating value="#{selectedRecipe.expertise}" readonly="true" />
 				</aside>
 				<p>#{selectedRecipe.description}</p>
 			</p:panel>

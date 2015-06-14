@@ -17,7 +17,6 @@ import dao.instance.UserDao;
 
 @ManagedBean
 @SessionScoped
-
 public class UserControlerBean {
 	private UserDao userDao;
 
@@ -25,7 +24,6 @@ public class UserControlerBean {
 		this.userDao = DaoFabric.getInstance().createUserDao();
 	}
 
-	
 	public void getAllUsers() {
 		ArrayList<UserModel> list = this.userDao.getAllUser();
 		UserListModelBean userList = new UserListModelBean();
@@ -39,21 +37,21 @@ public class UserControlerBean {
 		// place la liste de recette dans l'espace de mémoire de JSF
 		sessionMap.put("users", userList);
 	}
-	
-	public String checkUser(LoginBean loginBean) {	
-		
-		UserModel user = this.userDao.checkUser(loginBean.getLogin(),loginBean.getPwd());
+
+	public String checkUser(LoginBean loginBean) {
+
+		UserModel user = this.userDao.checkUser(loginBean.getLogin(),
+				loginBean.getPwd());
 		if (user != null) {
 			// récupère l'espace de mémoire de JSF
-			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			ExternalContext externalContext = FacesContext.getCurrentInstance()
+					.getExternalContext();
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			// place l'utilisateur dans l'espace de mémoire de JSF
 			sessionMap.put("loggedUser", user);
 			// redirect the current page
 			return "userDisplay.xhtml";
-		} 
-		else 
-		{
+		} else {
 			// redirect the current page
 			return "identification.xhtml";
 		}
@@ -70,16 +68,26 @@ public class UserControlerBean {
 			return Integer.toString(res);
 		}
 	}
-	
-	public int delUser(UserModel user){
+
+	public int delUser(UserModel user) {
 		int ret = this.userDao.deleteUser(user);
-		return ret;		
+		return ret;
 	}
-	
+
 	public int updateUser(UserModel user) {
 		int ret = this.userDao.updateUser(user);
-		return ret;	
+		return ret;
 	}
-	
-	
+
+	public String decoUser() {
+		// récupère l'espace de mémoire de JSF
+		ExternalContext externalContext = FacesContext.getCurrentInstance()
+				.getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		// place la liste de recette dans l'espace de mémoire de JSF
+		sessionMap.remove("loggedUser");
+		System.out.println("test");
+		return "menu.jsf";
+	}
+
 }
