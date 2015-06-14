@@ -3,7 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
 	<link rel="stylesheet" type="text/css" href="res/css/style.css" />
@@ -12,22 +15,74 @@
 
 <h:body>
 
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="commonHeader.xhtml" />
-		</ui:insert>
+	<div class="ui-grid ui-grid-responsive">
+		<div class="ui-grid-row" style="background-color: orange">
+			<div class="ui-grid-col-4">
+				<ui:insert name="headerTitle">
+					<h1 style="background-color: orange">Emergency</h1>
+				</ui:insert>
+			</div>
+			<div class="ui-grid-col-8">
+				<ui:insert name="connexion">
+					<!--<c:if test="#{empty loggedUser}">  -->
+						<div class="ui-grid ui-grid-responsive" style="float: right;">
+							<div class="ui-grid-row">
+								<h:form>
+									<div class="ui-grid-col-3">
+										<p:inputText id="login" size="10" value="#{loginBean.login}"
+											required="false" placeholder="Login" label="login">
+										</p:inputText>
+										<p:tooltip id="toolTipLogin" for="login"
+											value="On précise ici les contraintes de saisie du login"
+											showEffect="clip" hideEffect="explode" />
+										<p:message for="login" display="icon" />
+									</div>
+									<div class="ui-grid-col-3">
+										<p:password id="password" size="10" value="#{loginBean.pwd}"
+											placeholder="Password" />
+										<p:message for="password" display="icon" />
+										<p:tooltip id="toolTipPassword" for="password"
+											value="On précise ici les contraintes de saisie du password"
+											showEffect="clip" hideEffect="explode" />
+									</div>
+									<div class="ui-grid-col-3">
+										<p:commandButton value="Connexion"
+											action="#{userControlerBean.checkUser(loginBean)}" />
+									</div>
+									<div class="ui-grid-col-3">
+										<p:button value="Inscription" icon="ui-icon-plusthick">
+											<f:param name="param1" value="valueparam1" />
+										</p:button>
+									</div>
+								</h:form>
+							</div>
+						</div>
+					<!-- </c:if> -->
+				</ui:insert>
+			</div>
+		</div>
 	</div>
 
 	<div id="content">
 		<ui:insert name="content">
-			<ui:include src="commonContent.xhtml" />
+			<h1>This is default content</h1>
 		</ui:insert>
 		<div class="push"></div>
 	</div>
 
 	<div id="footer">
 		<ui:insert name="footer">
-			<ui:include src="commonFooter.xhtml" />
+			<div class="ui-grid ui-grid-responsive">
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-4">
+						<p style="float: center;">Copyright 2015 all right reserved</p>
+					</div>
+					<div class="ui-grid-col-8">
+						<img src="res/img/splash_petit.png" style="float: right;"
+							alt="Cook Me!" />
+					</div>
+				</div>
+			</div>
 		</ui:insert>
 	</div>
 

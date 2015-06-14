@@ -10,39 +10,58 @@
 	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
 
 		<ui:define name="content">
-
+			<h1>Tell what do you want</h1>
 			<h:form>
 
 
-				<p:panel id="basic" header="Recipe criterias">
-
-					<h:panelGrid columns="2" cellpadding="5">
-
-						<p:outputLabel for="duration" value="Preparation Duration: " />
-						<p:inputText id="duration" value="#{searchRecipeBean.duration}"
-							converterMessage="Please enter digits only." />
-
-						<h:outputText value="Cook Expertise" />
-						<p:rating value="#{searchRecipeBean.expertise}" />
-
-						<h:outputText id="output"
-							value="For #{searchRecipeBean.nbpeople} people" />
-						<h:inputHidden id="txt2" value="#{searchRecipeBean.nbpeople}" />
-						<p:slider minValue="1" maxValue="10" for="txt2" display="output"
-							style="width: 200px" displayTemplate="For {value} people" />
-
-						<p:outputLabel for="type" value="Cook Type:" />
-						<p:selectOneMenu id="type" value="#{searchRecipeBean.type}"
-							style="width:125px">
-							<f:selectItem itemLabel="Salad" itemValue="Salad" />
-							<f:selectItem itemLabel="Meat" itemValue="Meal" />
-							<f:selectItem itemLabel="Fish" itemValue="Fish" />
-							<f:selectItem itemLabel="Dessert" itemValue="Dessert" />
-						</p:selectOneMenu>
-
-
-
-					</h:panelGrid>
+				<p:panel header="#{selectedRecipe.title}" style="text-align:center">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-6">
+									<i class="fa-li fa fa-check-square"></i><p:outputLabel for="duration" value="Preparation Duration: " />
+								</div>
+								<div class="ui-grid-col-6">
+									<h:outputText value="Cook Expertise" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-6">
+									<p:spinner id="duration" value="#{searchRecipeBean.duration}"
+										converterMessage="Please enter digits only." />
+								</div>
+								<div class="ui-grid-col-6">
+									<p:rating value="#{searchRecipeBean.expertise}" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-6">
+									<h:outputText id="output"
+										value="For #{searchRecipeBean.nbpeople} people" />
+									<h:inputHidden id="txt2" value="#{searchRecipeBean.nbpeople}" />
+								</div>
+								<div class="ui-grid-col-6">
+									<p:outputLabel for="type" value="Cook Type:" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-6">
+									<p:slider minValue="1" maxValue="10" for="txt2"
+										display="output" style="width: 200px"
+										displayTemplate="For {value} people" />
+								</div>
+								<div class="ui-grid-col-6">
+									<p:selectOneMenu id="type" value="#{searchRecipeBean.type}"
+										style="width:125px">
+										<f:selectItem itemLabel="Salad" itemValue="Salad" />
+										<f:selectItem itemLabel="Meal" itemValue="Meal" />
+										<f:selectItem itemLabel="Fish" itemValue="Fish" />
+										<f:selectItem itemLabel="Dessert" itemValue="Dessert" />
+									</p:selectOneMenu>
+								</div>
+							</div>
+						</div>
+					</div>
 				</p:panel>
 				<p:dialog widgetVar="dlg" modal="true" resizable="false"
 					header="Values" showEffect="fade">
@@ -54,6 +73,11 @@
 				<h:commandButton value="Teach Me!"
 					action="#{recipeControlerBean.getRecipList(searchRecipeBean)}" />
 			</h:form>
+
+
+
+
+
 
 		</ui:define>
 

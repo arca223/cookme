@@ -55,7 +55,7 @@
 						<p:selectOneMenu id="type" value="#{editedRecipe.type}"
 							style="width:125px">
 							<f:selectItem itemLabel="Salad" itemValue="Salad" />
-							<f:selectItem itemLabel="Meat" itemValue="Meal" />
+							<f:selectItem itemLabel="Meal" itemValue="Meal" />
 							<f:selectItem itemLabel="Fish" itemValue="Fish" />
 							<f:selectItem itemLabel="Dessert" itemValue="Dessert" />
 						</p:selectOneMenu>
@@ -67,11 +67,12 @@
 							style="width: 200px" displayTemplate="For {value} people" />
 						<h:outputText value="Description:" />
 						<h:inputTextarea rows="6" cols="30" value="#{editedRecipe.description}" />
-						<h:inputHidden id="txt2" value="#{editedRecipe.nbpeople}" />
+						
 
 
 
 					</p:panelGrid>
+					<h:inputHidden id="txt2" value="#{editedRecipe.nbpeople}" />
 					<h:commandButton value="Save"
 						action="#{adminControlerBean.saveRecipe(editedRecipe)}">
 					</h:commandButton>

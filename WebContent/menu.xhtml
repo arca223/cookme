@@ -10,14 +10,19 @@
 <h:body>
 	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
 
-		<ui:define name="header">
+		<ui:define name="headerTitle">
+		</ui:define>
+
+		<ui:define name="connexion">
 		</ui:define>
 
 		<ui:define name="content">
 			<br />
 			<h:form id="menu">
-				<h:commandButton class="buttonmenu emergency" value="Emergency" action="inscription.jsf"/>
-				<h:commandButton class="buttonmenu recipes" value="Recipes" action="recipeResearch.jsf"/>
+				<h:commandButton class="buttonmenu emergency" value="Emergency"
+					action="inscription.jsf" />
+				<h:commandButton class="buttonmenu recipes" value="Recipes"
+					action="recipeResearch.jsf" />
 				<h:commandButton class="buttonmenu shop" value="Shop" />
 			</h:form>
 		</ui:define>

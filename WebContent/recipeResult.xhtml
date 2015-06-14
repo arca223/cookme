@@ -26,7 +26,7 @@
                             <p:rating value="#{recipe.expertise}" readonly="true" />
                             <h:outputText value="duration #{recipe.duration} min" />
                             <h:outputText value="#{recipe.nbpeople} people" />
-                            <h:outputText value="#{recipe.description}" />
+                            <h:inputTextarea  rows="5" cols="30" readonly="true" value="#{recipe.description}"  style="border-color: white"  />
                             <h:commandButton value="detail" action="#{recipeControlerBean.getRecipe(recipe)}" />
 
                         </h:panelGrid>
