@@ -1,21 +1,38 @@
 package model;
 
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class SearchRecipeBean {
+public class SearchRecipeBean implements Serializable {
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1897074829530405405L;
 	
 	private int expertise;
 	private int nbpeople;
-	private String duration;
-	private int convertedDuration;
+	private int duration;
 	private String type;
+	
 	
 
 	public SearchRecipeBean(){	
+	}
+	
+	public SearchRecipeBean(int expertise, int nbpeople, int duration,
+			String type) {
+		super();
+		this.expertise = expertise;
+		this.nbpeople = nbpeople;
+		this.duration = duration;
+		this.type = type;
 	}
 	
 	public int getExpertise() {
@@ -30,13 +47,11 @@ public class SearchRecipeBean {
 	public void setNbpeople(int nbpeople) {
 		this.nbpeople = nbpeople;
 	}
-	public String getDuration() {
+	public int getDuration() {
 		return duration;
 	}
-	public void setDuration(String duration) {
+	public void setDuration(int duration) {
 		
-		//convertedDuration = Integer.parseInt(duration.substring(0, 1));
-		convertedDuration = (duration.length() > 0 ) ? Integer.parseInt(duration.substring(0, 1)) : 0;
 		this.duration = duration;
 	}
 	public String getType() {
@@ -46,16 +61,8 @@ public class SearchRecipeBean {
 		this.type = type;
 	}
 	
-	public int getConvertedDuration() {
-		return convertedDuration;
-	}
-
-	public void setConvertedDuration(int convertedDuration) {
-		this.convertedDuration = convertedDuration;
-	}
-
 	public String toString(){
-		return "[EXPERTISE]="+expertise+";[NBPEOPLE]="+nbpeople+";[DURATION]="+convertedDuration+";[TYPE]="+type;
+		return "[EXPERTISE]="+expertise+";[NBPEOPLE]="+nbpeople+";[DURATION]="+duration+";[TYPE]="+type;
 		
 	}
 	

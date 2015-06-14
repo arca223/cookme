@@ -3,9 +3,6 @@ package model;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
 
 public class UserModel implements Serializable {
 	/**
@@ -18,6 +15,7 @@ public class UserModel implements Serializable {
 	private int age;
 	private String login;
 	private String pwd;
+	private int id;
 	private int admin;
 
 	// Contrainte BEAN constructeur sans paramètre
@@ -87,4 +85,13 @@ public class UserModel implements Serializable {
 		this.admin = admin;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 }

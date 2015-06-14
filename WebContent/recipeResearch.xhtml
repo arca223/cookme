@@ -19,8 +19,7 @@
    				<h:panelGrid columns="2" cellpadding="5">
 					
 					<p:outputLabel for="duration" value="Preparation Duration: " />
-					<p:inputMask id="duration" value="#{searchRecipeBean.duration}"
-						mask="9:99" />
+					<p:inputText id="duration" value="#{searchRecipeBean.duration}" converterMessage="Please enter digits only." />
 
 					<h:outputText value="Cook Expertise" />
 					<p:rating value="#{searchRecipeBean.expertise}" />

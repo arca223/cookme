@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+
+	<ui:composition template="WEB-INF/template/commonLayout.xhtml">
+
+		<ui:define name="content">
+
+			<f:facet name="header"></f:facet>
+
+			<p:panel header="#{selectedRecipe.title}" style="text-align:center">
+
+				<aside>
+					<h:outputText style="display: block;"
+						value="#{selectedRecipe.duration}" />
+					<h:outputText style="display: block;"
+						value="#{selectedRecipe.nbpeople}" />
+					<p:rating value="#{selectedRecipe.expertise}" readonly="true" />
+				</aside>
+				<p>#{selectedRecipe.description}</p>
+			</p:panel>
+
+			<p:panel header="Comment" style="text-align:center">
+				<ui:repeat var="comment" value="#{commentList.commentList}">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-1">#{comment.login}</div>
+							<div class="ui-grid-col-2">#{comment.commentDate}</div>
+							<div class="ui-grid-col-7">#{comment.comment}</div>
+							<div class="ui-grid-col-2">
+								<p:rating value="#{comment.rate}" readonly="true" />
+							</div>
+						</div>
+					</div>
+					<p:separator />
+
+				</ui:repeat>
+				<c:if test="#{not empty loggedUser}">
+					<h:form>
+						<div class="ui-grid ui-grid-responsive">
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-3"></div>
+								<div class="ui-grid-col-7">
+									<p:inputTextarea value="#{commentSubmissionBean.comment}"
+										rows="6" cols="33" />
+								</div>
+								<div class="ui-grid-col-2">
+									<p:rating value="#{commentSubmissionBean.rate}" />
+								</div>
+							</div>
+						</div>
+						<h:commandButton value="Post your comment"
+							action="#{recipeControlerBean.addComment(commentSubmissionBean)}" />
+					</h:form>
+				</c:if>
+				<c:if test="#{empty loggedUser}">
+					You must be connected to post a comment
+				</c:if>
+			</p:panel>
+
+
+
+
+		</ui:define>
+
+		<ui:define name="footer">
+			<h2>This is page1 Footer</h2>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>
+

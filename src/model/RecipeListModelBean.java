@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,11 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class RecipeListModelBean {
+public class RecipeListModelBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3001619494755764770L;
 	private List<RecipeModel> recipeList;
 
 	public RecipeListModelBean() {

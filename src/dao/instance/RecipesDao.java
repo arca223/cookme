@@ -4,12 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import model.RecipeListModelBean;
 import model.RecipeModel;
 import model.SearchRecipeBean;
-import model.UserModel;
 
 public class RecipesDao {
 
@@ -52,11 +50,11 @@ public class RecipesDao {
 		}
 	}
 
-	public ArrayList<RecipeModel> getAllRecipes() {
+	public RecipeListModelBean getAllRecipes() {
 		java.sql.Statement query;
 		RecipeModel recipe;
 
-		ArrayList<RecipeModel> recipeList = new ArrayList<RecipeModel>();
+		RecipeListModelBean recipeList = new RecipeListModelBean();
 
 		try {
 			// create connection
@@ -78,8 +76,9 @@ public class RecipesDao {
 				recipe.setNbpeople(rst.getInt("nbpeople"));
 				recipe.setDuration(rst.getInt("duration"));
 				recipe.setType(rst.getString("type"));
+				recipe.setId(rst.getInt("id"));
 
-				recipeList.add(recipe);
+				recipeList.addRecipeList(recipe);
 			}
 
 		}
@@ -93,6 +92,8 @@ public class RecipesDao {
 
 	public RecipeListModelBean getRecipesByCriterias(SearchRecipeBean criterias) {
 		RecipeModel recipe;
+
+		
 
 		RecipeListModelBean recipeList = new RecipeListModelBean();
 		// Création de la requête
@@ -109,10 +110,9 @@ public class RecipesDao {
 					+ " AND nbpeople = ?" : sqlSelect;
 			sqlSelect = (criterias.getType().length() > 0) ? sqlSelect
 					+ " AND type = ?" : sqlSelect;
-			sqlSelect = (criterias.getConvertedDuration() > 0) ? sqlSelect
+			sqlSelect = (criterias.getDuration() > 0) ? sqlSelect
 					+ " AND duration = ?" : sqlSelect;
 			
-			System.out.println(sqlSelect);
 			
 			PreparedStatement querySt = connection.prepareStatement(sqlSelect);
 
@@ -131,9 +131,9 @@ public class RecipesDao {
 				System.out.println(criterias.getType() + " " + i);
 				i++;
 			}
-			if (criterias.getConvertedDuration() > 0) {
-				querySt.setInt(i, criterias.getConvertedDuration());
-				System.out.println(criterias.getConvertedDuration() + " " + i);
+			if (criterias.getDuration() > 0) {
+				querySt.setInt(i, criterias.getDuration());
+				System.out.println(criterias.getDuration() + " " + i);
 			}
 
 			ResultSet rst = querySt.executeQuery();
@@ -147,6 +147,7 @@ public class RecipesDao {
 				recipe.setNbpeople(rst.getInt("nbpeople"));
 				recipe.setDuration(rst.getInt("duration"));
 				recipe.setType(rst.getString("type"));
+				recipe.setId(rst.getInt("id"));
 				recipeList.addRecipeList(recipe);
 			}
 

@@ -1,6 +1,14 @@
 package model;
 
-public class RecipeModel {
+import java.io.Serializable;
+
+public class RecipeModel implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 178266335902170455L;
+	
+	private int id;
 	private String title;
 	private String description;
 	private int expertise=1;
@@ -69,10 +77,20 @@ public class RecipeModel {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 
 	public String toString() {
 		return "[TITLE]:" + this.getTitle() + ",[DESCRIPTION]:"
 		+ this.getDescription() + ",[EXPERTISE]:" + this.getExpertise() + ",[NBPEOPLE]:"
-		+ this.getNbpeople() + ",[TYPE]:" + this.getType();
+		+ this.getNbpeople() + ",[TYPE]:" + this.getType()+ ",[ID]:" + this.getId();
 	}
 }
