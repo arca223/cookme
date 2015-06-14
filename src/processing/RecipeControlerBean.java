@@ -28,8 +28,27 @@ public class RecipeControlerBean {
 		this.commentDao = DaoFabric.getInstance().createCommentDao();
 	}
 
+	public void addRecipe(RecipeModel recipe) {
+
+		recipeDao.addRecipe(recipe);
+		this.loadAllRecipe();
+	}
+
+	public void updateRecipe(RecipeModel recipe) {
+
+		recipeDao.updateRecipe(recipe);
+		this.loadAllRecipe();
+	}
+
+	public void deleteRecipe(RecipeModel recipe) {
+
+		recipeDao.deleteRecipe(recipe);
+		this.loadAllRecipe();
+	}
+
 	public void loadAllRecipe() {
 		RecipeListModelBean recipeList = new RecipeListModelBean();
+		recipeList = recipeDao.getAllRecipes();
 		// récupère l'espace de mémoire de JSF
 		ExternalContext externalContext = FacesContext.getCurrentInstance()
 				.getExternalContext();
@@ -44,46 +63,46 @@ public class RecipeControlerBean {
 				.getRecipesByCriterias(searchCriterias);
 
 		// récupère l'espace de mémoire de JSF
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		ExternalContext externalContext = FacesContext.getCurrentInstance()
+				.getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		// place l'utilisateur dans l'espace de mémoire de JSF
 		sessionMap.put("resultRecipe", recipeList);
 		// redirect the current page
 
-
 		return "recipeResult.jsf";
 
 	}
-	
-	public String getRecipe(RecipeModel recipe){
-				
+
+	public String getRecipe(RecipeModel recipe) {
+
 		CommentListBean clist = new CommentListBean();
 		clist = commentDao.getAllCommentByRecipe(recipe.getId());
-		
+
 		// récupère l'espace de mémoire de JSF
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		ExternalContext externalContext = FacesContext.getCurrentInstance()
+				.getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("selectedRecipe", recipe);
 
-		
 		sessionMap.put("commentList", clist);
-		
+
 		return "recipe.jsf";
 	}
-	
-	public void addComment(CommentSubmissionBean comment){
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+
+	public void addComment(CommentSubmissionBean comment) {
+		ExternalContext externalContext = FacesContext.getCurrentInstance()
+				.getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		UserModel user = (UserModel) sessionMap.get("loggedUser");
 		RecipeModel recipe = (RecipeModel) sessionMap.get("selectedRecipe");
-		
-		
-		if(user !=null){
+
+		if (user != null) {
 			comment.setUser_id(user.getId());
 			comment.setRecipe_id(recipe.getId());
 			commentDao.addComment(comment);
-			
+
 		}
-		
 	}
+
 }
