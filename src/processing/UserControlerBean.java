@@ -65,6 +65,25 @@ public class UserControlerBean {
 			return Integer.toString(res);
 		}
 	}
+	
+	public String checkUserAdmin(LoginBean loginBean){
+		UserModel user = this.userDao.checkUserAdmin(loginBean.getLogin(),loginBean.getPwd());
+		if (user != null) {
+			// récupère l'espace de mémoire de JSF
+			ExternalContext externalContext = FacesContext.getCurrentInstance()
+					.getExternalContext();
+			Map<String, Object> sessionMap = externalContext.getSessionMap();
+			// place l'utilisateur dans l'espace de mémoire de JSF
+			sessionMap.put("loggedUser", user);
+			// redirect the current page
+			return "adminHome.xhtml";
+		} 
+		else 
+		{
+			// redirect the current page
+			return "adminLog.xhtml";
+		}
+	}
 
 	public int delUser(UserModel user) {
 		int ret = this.userDao.deleteUser(user);
@@ -85,5 +104,11 @@ public class UserControlerBean {
 		sessionMap.remove("loggedUser");
 		return "menu.jsf";
 	}
+	
+	public int addUser(UserModel user) {
+		int ret = this.userDao.addUser(user);
+		return ret;
+	}
+	
 
 }

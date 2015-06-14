@@ -32,7 +32,7 @@ public class UserDao {
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 
-			String sqlInsert = "INSERT INTO users(firstname, lastname, age, mail, login, pwd) VALUES (?,?,?,?,?,?)";
+			String sqlInsert = "INSERT INTO users(firstname, lastname, age, mail, login, pwd, admin) VALUES (?,?,?,?,?,?,?)";
 			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
 
 			querySt.setString(1, user.getFirstname());
@@ -41,6 +41,7 @@ public class UserDao {
 			querySt.setString(4, user.getMail());
 			querySt.setString(5, user.getLogin());
 			querySt.setString(6, user.getPwd());
+			querySt.setBoolean(7, user.getAdmin());
 
 			int res = querySt.executeUpdate();
 			connection.close();
@@ -79,7 +80,7 @@ public class UserDao {
 				user.setAge(rst.getInt("age"));
 				user.setLogin(rst.getString("login"));
 				user.setPwd(rst.getString("pwd"));
-				user.setAdmin(rst.getInt("admin"));
+				user.setAdmin(rst.getBoolean("admin"));
 				user.setId(rst.getInt("id"));
 				
 
@@ -129,6 +130,45 @@ public class UserDao {
 		return user;
 	}
 	
+public UserModel checkUserAdmin(String login, String pwd) {
+		
+	UserModel user = null;
+	
+	try
+	{
+		connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+				+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+
+		String sqlSelect = "SELECT * FROM users WHERE login = ? AND pwd = ?";
+		PreparedStatement querySt = connection.prepareStatement(sqlSelect);
+		querySt.setString(1, login);
+		querySt.setString(2, pwd);
+		
+		ResultSet rst = querySt.executeQuery();
+		
+		
+		rst.next();
+		if (rst.getBoolean("admin")) {
+			user = new UserModel();
+			user.setFirstname(rst.getString("firstname"));
+			user.setLastname(rst.getString("lastname"));
+			user.setMail(rst.getString("mail"));
+			user.setAge(rst.getInt("age"));
+			user.setLogin(rst.getString("login"));
+			user.setPwd(rst.getString("pwd"));
+			user.setId(rst.getInt("id"));
+			user.setAdmin(rst.getBoolean("admin"));
+		}
+	}
+	catch(SQLException e){
+		e.printStackTrace();
+	}
+	return user;
+}
+
+	
+	
+	
 	public int deleteUser(UserModel user) {
 		// Création de la requête
 		try {
@@ -160,7 +200,7 @@ public class UserDao {
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 
-			String sqlInsert = "UPDATE `users` SET firstname=?, lastname=?, age=?, mail=?, login=? where id=?";
+			String sqlInsert = "UPDATE `users` SET firstname=?, lastname=?, age=?, mail=?, login=?, pwd=?, admin=? where id=?";
 			PreparedStatement querySt = connection.prepareStatement(sqlInsert);
 
 			querySt.setString(1, user.getFirstname());
@@ -168,7 +208,9 @@ public class UserDao {
 			querySt.setInt(3, user.getAge());
 			querySt.setString(4, user.getMail());
 			querySt.setString(5, user.getLogin());
-			querySt.setInt(6, user.getId());
+			querySt.setString(6, user.getPwd());
+			querySt.setBoolean(7, user.getAdmin());
+			querySt.setInt(8, user.getId());
 
 			int res = querySt.executeUpdate();
 			connection.close();
